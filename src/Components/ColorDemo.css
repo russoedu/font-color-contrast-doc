@@ -1,0 +1,23 @@
+.demo-container {
+  /* display: flex; */
+}
+
+.color-picker {
+  padding-left: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  float: left;
+}
+
+.demo-bg {
+  text-align: center;
+  padding-left: 260px;
+  padding-right: 20px;
+}
+
+.font-name {
+  text-align: left;
+  font-style: italic;
+  font-weight: bolder;
+}
