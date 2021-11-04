@@ -3,8 +3,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { ColorsSheet } from './Components/ColorsSheet'
 import { ColorDemo } from './Components/ColorDemo'
 import 'react-tabs/style/react-tabs.css'
+import { useState } from 'react'
 
 function App() {
+  const [sheetSlice, setSheetSlice] = useState(0)
+  const [demoSlice, setDemoSlice] = useState(0)
+  const [demoFontSlice, setDemoFontSlice] = useState(0)
+
   return (
     <div className="App">
       <header>
@@ -19,10 +24,10 @@ function App() {
         </TabList>
 
         <TabPanel>
-          <ColorsSheet/>
+          <ColorsSheet slice={sheetSlice} setSlice={setSheetSlice}/>
         </TabPanel>
         <TabPanel>
-          <ColorDemo/>
+          <ColorDemo slice={demoSlice} setSlice={setDemoSlice} fontSlice={demoFontSlice} setFontSlice={setDemoFontSlice}/>
         </TabPanel>
       </Tabs>
     </div>
