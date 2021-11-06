@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header></Header>
-      <div>
+      <div className='main'>
         <Routes>
           <Route
             path="/picker"

@@ -11,7 +11,7 @@ for (const color of Array.from(colors)) {
 }
 
 export function ColorsSheet (props: {slice: number, setSlice: React.Dispatch<React.SetStateAction<number>>}) {
-  const spliceLimit = 336
+  const spliceLimit = 342
   let i = 0
 
   function handleSlider(event: any) {
