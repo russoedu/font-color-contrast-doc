@@ -1,7 +1,7 @@
-import fontColorContrast from 'font-color-contrast'
 import { useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
-import './ColorDemo.css'
+import fontColorContrast from 'font-color-contrast'
+import './ColorPicker.css'
 
 const fontFamilies = [
   'serif',
@@ -46,13 +46,19 @@ const fontSizes = [
   '20pt',
 ]
 
-export function ColorDemo (props: {slice: number, setSlice: React.Dispatch<React.SetStateAction<number>>, fontSlice: number, setFontSlice: React.Dispatch<React.SetStateAction<number>>}) {
-  const [color, setColor] = useState('#df00ff')
+export function ColorPicker (props: {
+    slice: number,
+    setSlice: React.Dispatch<React.SetStateAction<number>>,
+    color: string,
+    setColor: React.Dispatch<React.SetStateAction<string>>
+    fontSlice: number,
+    setFontSlice: React.Dispatch<React.SetStateAction<number>>
+  }) {
 
   const colorStyle = {
-    backgroundColor: color,
-    backgroundImage: `linear-gradient(to right, white 233px, ${color} 235px)`,
-    color: fontColorContrast(color)
+    backgroundColor: props.color,
+    backgroundImage: `linear-gradient(to right, white 233px, ${props.color} 235px)`,
+    color: fontColorContrast(props.color)
   }
 
   function handleFontSlider(event: any) {
@@ -72,7 +78,7 @@ export function ColorDemo (props: {slice: number, setSlice: React.Dispatch<React
     //   )
     // })
     return (
-      <div style={{ fontFamily: font, color: fontColorContrast(color), fontSize: fontSizes[props.fontSlice]}}>
+      <div style={{ fontFamily: font, color: fontColorContrast(props.color), fontSize: fontSizes[props.fontSlice]}}>
         <h1 className='font-name'>Font: {font}, size: {fontSizes[props.fontSlice]}</h1>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non mi sit amet eros ultrices efficitur. Integer et orci accumsan lacus luctus placerat non ut tellus. Praesent et cursus turpis. Phasellus pharetra orci et enim congue sodales. Cras quis tellus scelerisque, pharetra augue sed, lacinia diam. Nulla sed varius tellus. Fusce egestas neque vitae aliquet laoreet. Vivamus vestibulum diam non tellus tristique, sit amet imperdiet sem gravida.
@@ -105,7 +111,7 @@ Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit
         <p>Page {Number(props.slice) + 1} of {(fontFamilies.length).toFixed(0)}</p>
       </div>
       <div className='color-picker'>
-        <HexColorPicker color={color} onChange={setColor} />
+        <HexColorPicker color={props.color} onChange={props.setColor} />
       </div>
       <div className='demo-bg' style={colorStyle}>
         <input

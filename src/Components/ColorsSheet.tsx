@@ -1,6 +1,6 @@
-import './ColorsSheet.css'
-import fontColorContrast from 'font-color-contrast'
 import generator from 'sequential-id-generator'
+import fontColorContrast from 'font-color-contrast'
+import './ColorsSheet.css'
 
 
 const colors = generator(6, '02468ACEF')

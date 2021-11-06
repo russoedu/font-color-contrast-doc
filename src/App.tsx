@@ -1,36 +1,42 @@
-import './App.css'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import { ColorsSheet } from './Components/ColorsSheet'
-import { ColorDemo } from './Components/ColorDemo'
-import 'react-tabs/style/react-tabs.css'
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Header } from './Components/Header'
+import { ColorsSheet } from './Components/ColorsSheet'
+import { ColorPicker } from './Components/ColorPicker'
+import './App.css'
 
 function App() {
   const [sheetSlice, setSheetSlice] = useState(0)
   const [demoSlice, setDemoSlice] = useState(0)
   const [demoFontSlice, setDemoFontSlice] = useState(0)
+  const [color, setColor] = useState('#df00ff')
 
   return (
-    <div className="App">
-      <header>
-        <h1>
-          font-color-contrast demo app
-        </h1>
-      </header>
-      <Tabs>
-        <TabList>
-          <Tab>Colors Sheet</Tab>
-          <Tab>Color Demo</Tab>
-        </TabList>
-
-        <TabPanel>
-          <ColorsSheet slice={sheetSlice} setSlice={setSheetSlice}/>
-        </TabPanel>
-        <TabPanel>
-          <ColorDemo slice={demoSlice} setSlice={setDemoSlice} fontSlice={demoFontSlice} setFontSlice={setDemoFontSlice}/>
-        </TabPanel>
-      </Tabs>
-    </div>
+    <BrowserRouter>
+      <Header></Header>
+      <div>
+        <Routes>
+          <Route
+            path="/picker"
+            element={<ColorPicker
+              slice={demoSlice}
+              setSlice={setDemoSlice}
+              fontSlice={demoFontSlice}
+              setFontSlice={setDemoFontSlice}
+              color={color}
+              setColor={setColor}
+            />}
+          />
+          <Route
+            path="/"
+            element={<ColorsSheet
+              slice={sheetSlice}
+              setSlice={setSheetSlice}
+            />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
