@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
 import fontColorContrast from 'font-color-contrast'
 import './ColorPicker.css'
