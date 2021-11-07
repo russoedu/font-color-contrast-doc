@@ -1,6 +1,7 @@
 import generator from 'sequential-id-generator'
 import fontColorContrast from 'font-color-contrast'
 import './ColorsSheet.css'
+import { Slider } from '../components/Slider'
 
 
 const colors = generator(6, '02468ACEF')
@@ -17,10 +18,6 @@ export function ColorsSheet ({slice, setSlice }: {
   const spliceLimit = 342
   let i = 0
 
-  function handleSlider(event: any) {
-    setSlice(event.target.value);
-  }
-
   const listColours = testColors.slice(slice * spliceLimit, slice * spliceLimit + spliceLimit).map((color) => {
       const divStyle = {
         backgroundColor: color,
@@ -31,18 +28,13 @@ export function ColorsSheet ({slice, setSlice }: {
 
   return (
     <>
-      <div className="slidecontainer">
-        <input
-          type="range"
-          className="slider"
-          min="0"
-          max={testColors.length / spliceLimit}
-          value={slice}
-          id="myRange"
-          onChange={handleSlider}
-        />
-        <p>Page {Number(slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[slice * spliceLimit]} to {testColors[slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
-      </div>
+      <Slider
+        min={0}
+        max={testColors.length / spliceLimit}
+        value={slice}
+        setValue={setSlice}
+      />
+      <p>Page {Number(slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[slice * spliceLimit]} to {testColors[slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
       <div className='colors-sheet'>
         {listColours}
       </div>

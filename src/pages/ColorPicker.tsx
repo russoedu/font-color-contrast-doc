@@ -1,6 +1,7 @@
 import { HexColorPicker } from 'react-colorful'
 import fontColorContrast from 'font-color-contrast'
 import './ColorPicker.css'
+import { Slider } from '../components/Slider'
 
 const fontFamilies = [
   'serif',
@@ -59,23 +60,7 @@ export function ColorPicker ({ slice, setSlice, color, setColor, fontSlice, setF
     backgroundImage: `linear-gradient(to right, white 233px, ${color} 235px)`,
     color: fontColorContrast(color)
   }
-
-  function handleFontSlider(event: any) {
-    setSlice(event.target.value);
-  }
-
-  function handleSizeSlider(event: any) {
-    console.log(fontSlice);
-    
-    setFontSlice(event.target.value);
-  }
-
   const content = fontFamilies.map(font => {
-    // const sizesText = fontSizes.map(size =>{
-    //   return(
-    //     <p className={'size-' + size} style={{ fontSize: size }}>This is {size}</p>
-    //   )
-    // })
     return (
       <div style={{ fontFamily: font, color: fontColorContrast(color), fontSize: fontSizes[fontSlice]}}>
         <h1 className='font-name'>Font: {font}, size: {fontSizes[fontSlice]}</h1>
@@ -97,30 +82,22 @@ Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit
 
   return (
     <div className='demo-container'>
-      <div className="slidecontainer">
-        <input
-          type="range"
-          className="slider"
-          min="0"
-          max={fontFamilies.length - 1}
-          value={slice}
-          id="myRange"
-          onChange={handleFontSlider}
-        />
-        <p>Page {Number(slice) + 1} of {(fontFamilies.length).toFixed(0)}</p>
-      </div>
+      <Slider
+        min={0}
+        max={fontFamilies.length - 1}
+        value={slice}
+        setValue={setSlice}
+      />
+      <p>Page {Number(slice) + 1} of {(fontFamilies.length).toFixed(0)}</p>
       <div className='color-picker'>
         <HexColorPicker color={color} onChange={setColor} />
       </div>
       <div className='demo-bg' style={colorStyle}>
-        <input
-          type="range"
-          className="slider font-slider"
-          min="0"
-          max={fontFamilies.length - 1}
+        <Slider
+          min={0}
+          max={fontSizes.length - 1}
           value={fontSlice}
-          id="myRange"
-          onChange={handleSizeSlider}
+          setValue={setFontSlice}
         />
         {content[slice]}
       </div>
