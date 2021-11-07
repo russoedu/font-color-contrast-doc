@@ -45,7 +45,7 @@ const fontSizes = [
   '20pt',
 ]
 
-export function ColorPicker (props: {
+export function ColorPicker ({ slice, setSlice, color, setColor, fontSlice, setFontSlice }: {
     slice: number,
     setSlice: React.Dispatch<React.SetStateAction<number>>,
     color: string,
@@ -55,19 +55,19 @@ export function ColorPicker (props: {
   }) {
 
   const colorStyle = {
-    backgroundColor: props.color,
-    backgroundImage: `linear-gradient(to right, white 233px, ${props.color} 235px)`,
-    color: fontColorContrast(props.color)
+    backgroundColor: color,
+    backgroundImage: `linear-gradient(to right, white 233px, ${color} 235px)`,
+    color: fontColorContrast(color)
   }
 
   function handleFontSlider(event: any) {
-    props.setSlice(event.target.value);
+    setSlice(event.target.value);
   }
 
   function handleSizeSlider(event: any) {
-    console.log(props.fontSlice);
+    console.log(fontSlice);
     
-    props.setFontSlice(event.target.value);
+    setFontSlice(event.target.value);
   }
 
   const content = fontFamilies.map(font => {
@@ -77,8 +77,8 @@ export function ColorPicker (props: {
     //   )
     // })
     return (
-      <div style={{ fontFamily: font, color: fontColorContrast(props.color), fontSize: fontSizes[props.fontSlice]}}>
-        <h1 className='font-name'>Font: {font}, size: {fontSizes[props.fontSlice]}</h1>
+      <div style={{ fontFamily: font, color: fontColorContrast(color), fontSize: fontSizes[fontSlice]}}>
+        <h1 className='font-name'>Font: {font}, size: {fontSizes[fontSlice]}</h1>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non mi sit amet eros ultrices efficitur. Integer et orci accumsan lacus luctus placerat non ut tellus. Praesent et cursus turpis. Phasellus pharetra orci et enim congue sodales. Cras quis tellus scelerisque, pharetra augue sed, lacinia diam. Nulla sed varius tellus. Fusce egestas neque vitae aliquet laoreet. Vivamus vestibulum diam non tellus tristique, sit amet imperdiet sem gravida.
 </p><p>
@@ -103,14 +103,14 @@ Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit
           className="slider"
           min="0"
           max={fontFamilies.length - 1}
-          value={props.slice}
+          value={slice}
           id="myRange"
           onChange={handleFontSlider}
         />
-        <p>Page {Number(props.slice) + 1} of {(fontFamilies.length).toFixed(0)}</p>
+        <p>Page {Number(slice) + 1} of {(fontFamilies.length).toFixed(0)}</p>
       </div>
       <div className='color-picker'>
-        <HexColorPicker color={props.color} onChange={props.setColor} />
+        <HexColorPicker color={color} onChange={setColor} />
       </div>
       <div className='demo-bg' style={colorStyle}>
         <input
@@ -118,11 +118,11 @@ Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit
           className="slider font-slider"
           min="0"
           max={fontFamilies.length - 1}
-          value={props.fontSlice}
+          value={fontSlice}
           id="myRange"
           onChange={handleSizeSlider}
         />
-        {content[props.slice]}
+        {content[slice]}
       </div>
     </div>
   )

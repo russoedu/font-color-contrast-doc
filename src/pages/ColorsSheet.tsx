@@ -10,15 +10,18 @@ for (const color of Array.from(colors)) {
   testColors.push('#' + color)
 }
 
-export function ColorsSheet (props: {slice: number, setSlice: React.Dispatch<React.SetStateAction<number>>}) {
+export function ColorsSheet ({slice, setSlice }: {
+    slice: number,
+    setSlice: React.Dispatch<React.SetStateAction<number>>
+  }) {
   const spliceLimit = 342
   let i = 0
 
   function handleSlider(event: any) {
-    props.setSlice(event.target.value);
+    setSlice(event.target.value);
   }
 
-  const listColours = testColors.slice(props.slice * spliceLimit, props.slice * spliceLimit + spliceLimit).map((color) => {
+  const listColours = testColors.slice(slice * spliceLimit, slice * spliceLimit + spliceLimit).map((color) => {
       const divStyle = {
         backgroundColor: color,
         color: fontColorContrast(color),
@@ -34,11 +37,11 @@ export function ColorsSheet (props: {slice: number, setSlice: React.Dispatch<Rea
           className="slider"
           min="0"
           max={testColors.length / spliceLimit}
-          value={props.slice}
+          value={slice}
           id="myRange"
           onChange={handleSlider}
         />
-        <p>Page {Number(props.slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[props.slice * spliceLimit]} to {testColors[props.slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
+        <p>Page {Number(slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[slice * spliceLimit]} to {testColors[slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
       </div>
       <div className='colors-sheet'>
         {listColours}

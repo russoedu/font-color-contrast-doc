@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Header } from './Components/Header'
-import { ColorsSheet } from './Components/ColorsSheet'
-import { ColorPicker } from './Components/ColorPicker'
+import { Header } from './pages/Header'
+import { ColorsSheet } from './pages/ColorsSheet'
+import { ColorPicker } from './pages/ColorPicker'
 import './App.css'
 
 function App() {
