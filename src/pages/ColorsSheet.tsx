@@ -22,9 +22,9 @@ export function ColorsSheet ({slice, setSlice }: {
       const divStyle = {
         backgroundColor: color,
         color: fontColorContrast(color),
-      };
+      }
     return <div key={i++} className='color-block' style={divStyle}>{color}</div>
-  });
+  })
 
   return (
     <>

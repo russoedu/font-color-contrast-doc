@@ -19,14 +19,14 @@ export function Slider ({ id= 'slider', className, min, max, vertical = false, v
   }
 
   function handleSlider(event: any) {
-    setValue(event.target.value);
+    setValue(event.target.value)
   }
 
   return (
     <input
       id={id}
       className={cls}
-      type="range"
+      type='range'
       min={min}
       max={max}
       value={value}

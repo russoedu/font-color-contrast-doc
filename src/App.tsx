@@ -6,7 +6,7 @@ import { ColorPicker } from './pages/ColorPicker'
 import './App.css'
 import { Home } from './pages/Home'
 
-function App() {
+export function App() {
   const [sheetSlice, setSheetSlice] = useState(0)
   const [demoSlice, setDemoSlice] = useState(0)
   const [demoFontSlice, setDemoFontSlice] = useState(7)
@@ -23,7 +23,7 @@ function App() {
               element={<Home/>}
             />
             <Route
-              path="/picker"
+              path='/picker'
               element={<ColorPicker
                 slice={demoSlice}
                 setSlice={setDemoSlice}
@@ -34,7 +34,7 @@ function App() {
               />}
             />
             <Route
-              path="/sheet"
+              path='/sheet'
               element={<ColorsSheet
                 slice={sheetSlice}
                 setSlice={setSheetSlice}
@@ -44,7 +44,5 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
-  );
+  )
 }
-
-export default App;
