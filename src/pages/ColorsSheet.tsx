@@ -15,7 +15,7 @@ export function ColorsSheet ({slice, setSlice }: {
     slice: number,
     setSlice: React.Dispatch<React.SetStateAction<number>>
   }) {
-  const spliceLimit = 342
+  const spliceLimit = 437
   let i = 0
 
   const listColours = testColors.slice(slice * spliceLimit, slice * spliceLimit + spliceLimit).map((color) => {
@@ -28,13 +28,16 @@ export function ColorsSheet ({slice, setSlice }: {
 
   return (
     <>
-      <Slider
-        min={0}
-        max={testColors.length / spliceLimit}
-        value={slice}
-        setValue={setSlice}
-      />
-      <p>Page {Number(slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[slice * spliceLimit]} to {testColors[slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
+      <div className='slider-container'>
+        <Slider
+          className='slider'
+          min={0}
+          max={testColors.length / spliceLimit}
+          value={slice}
+          setValue={setSlice}
+          />
+        <p>Page {Number(slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[slice * spliceLimit]} to {testColors[slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
+      </div>
       <div className='colors-sheet'>
         {listColours}
       </div>

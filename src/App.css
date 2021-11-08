@@ -1,4 +1,10 @@
-.main {
-  text-align: center;
-  padding-top: 80px;
+.columns {
+  padding-top: 3em;
+}
+.slider-container {
+  padding: 1em;
+  width: 100%;
+}
+.slider {
+  width: 100%;
 }

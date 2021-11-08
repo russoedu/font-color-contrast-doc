@@ -1,6 +1,6 @@
 import './Slider.css'
 
-export function Slider ({ id = 'slider', className = 'slider', min, max, vertical = false, value, setValue }: {
+export function Slider ({ id= 'slider', className, min, max, vertical = false, value, setValue }: {
   id?: string,
   className?: string,
   min: number,
@@ -9,23 +9,28 @@ export function Slider ({ id = 'slider', className = 'slider', min, max, vertica
   vertical?: boolean,
   setValue: (React.Dispatch<React.SetStateAction<number>>)
 }) {
+  let cls: string = ''
+  if (className && vertical) {
+    cls = className + ' vertical'
+  } else if (className) {
+    cls = className
+  } else if (vertical) {
+    cls = 'vertical'
+  }
+
   function handleSlider(event: any) {
     setValue(event.target.value);
   }
 
   return (
-    <div
+    <input
       id={id}
-      className={vertical ? className + ' vertical' : className}
-    >
-      <input
-        type="range"
-        className='slider'
-        min={min}
-        max={max}
-        value={value}
-        onChange={handleSlider}
-      />
-    </div>
+      className={cls}
+      type="range"
+      min={min}
+      max={max}
+      value={value}
+      onChange={handleSlider}
+    />
   )
 }

@@ -26,13 +26,6 @@ const fontFamilies = [
 ]
 
 const fontSizes = [
-  'xx-small',
-  'x-small',
-  'small',
-  'medium',
-  'large',
-  'x-large',
-  'xx-large',
   '6pt',
   '7pt',
   '8pt',
@@ -44,6 +37,7 @@ const fontSizes = [
   '16pt',
   '18pt',
   '20pt',
+  '24pt',
 ]
 
 export function ColorPicker ({ slice, setSlice, color, setColor, fontSlice, setFontSlice }: {
@@ -81,26 +75,31 @@ Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit
   })
 
   return (
-    <div className='demo-container'>
-      <Slider
-        min={0}
-        max={fontFamilies.length - 1}
-        value={slice}
-        setValue={setSlice}
-      />
-      <p>Page {Number(slice) + 1} of {(fontFamilies.length).toFixed(0)}</p>
-      <div className='color-picker'>
-        <HexColorPicker color={color} onChange={setColor} />
-      </div>
-      <div className='demo-bg' style={colorStyle}>
+    <>
+      <div className='slider-container'>
         <Slider
+          className='slider'
+          min={0}
+          max={fontFamilies.length - 1}
+          value={slice}
+          setValue={setSlice}
+        />
+        <p>Font {Number(slice) + 1} of {(fontFamilies.length).toFixed(0)} ({fontFamilies[slice]})</p>
+        <Slider
+          className='slider'
           min={0}
           max={fontSizes.length - 1}
           value={fontSlice}
           setValue={setFontSlice}
         />
+        <p>Size {Number(fontSlice) + 1} of {(fontSizes.length).toFixed(0)} ({fontSizes[fontSlice]})</p>
+      </div>
+      <div className='color-picker'>
+        <HexColorPicker color={color} onChange={setColor} />
+      </div>
+      <div className='demo-bg' style={colorStyle}>
         {content[slice]}
       </div>
-    </div>
+    </>
   )
 }
