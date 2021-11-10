@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Header } from './pages/Header'
+import { Header } from './components/Header'
 import { ColorsSheet } from './pages/ColorsSheet'
 import { ColorPicker } from './pages/ColorPicker'
-import './App.css'
 import { Home } from './pages/Home'
+import CssBaseline from '@mui/material/CssBaseline'
+import './App.css'
 
 export function App() {
   const [sheetSlice, setSheetSlice] = useState(0)
@@ -14,35 +15,33 @@ export function App() {
 
   return (
     <BrowserRouter>
-      <Header></Header>
-      <div className='main columns'>
-        <div className='column'>
-          <Routes>
-            <Route
-              path='/'
-              element={<Home/>}
-            />
-            <Route
-              path='/picker'
-              element={<ColorPicker
-                slice={demoSlice}
-                setSlice={setDemoSlice}
-                fontSlice={demoFontSlice}
-                setFontSlice={setDemoFontSlice}
-                color={color}
-                setColor={setColor}
-              />}
-            />
-            <Route
-              path='/sheet'
-              element={<ColorsSheet
-                slice={sheetSlice}
-                setSlice={setSheetSlice}
-              />}
-            />
-          </Routes>
-        </div>
-      </div>
+      <CssBaseline>
+        <Header></Header>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home/>}
+          />
+          <Route
+            path='/picker'
+            element={<ColorPicker
+              slice={demoSlice}
+              setSlice={setDemoSlice}
+              fontSlice={demoFontSlice}
+              setFontSlice={setDemoFontSlice}
+              color={color}
+              setColor={setColor}
+            />}
+          />
+          <Route
+            path='/sheet'
+            element={<ColorsSheet
+              slice={sheetSlice}
+              setSlice={setSheetSlice}
+            />}
+          />
+        </Routes>
+      </CssBaseline>
     </BrowserRouter>
   )
 }

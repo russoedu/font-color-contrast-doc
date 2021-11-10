@@ -1,5 +1,5 @@
 .columns {
-  padding-top: 3em;
+  /* padding-top: 3em; */
 }
 .slider-container {
   padding: 1em;
@@ -7,4 +7,9 @@
 }
 .slider {
   width: 100%;
+}
+
+.demo {
+  margin: 0 3em 1em 3em;
+  padding: 2em;
 }

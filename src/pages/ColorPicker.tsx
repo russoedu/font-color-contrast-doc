@@ -2,6 +2,7 @@ import { HexColorPicker } from 'react-colorful'
 import fontColorContrast from 'font-color-contrast'
 import './ColorPicker.css'
 import { Slider } from '../components/Slider'
+import { Paper } from '@mui/material'
 
 const fontFamilies = [
   'serif',
@@ -97,9 +98,11 @@ Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit
       <div className='color-picker'>
         <HexColorPicker color={color} onChange={setColor} />
       </div>
-      <div className='demo-bg' style={colorStyle}>
-        {content[slice]}
-      </div>
+      <Paper className='demo demo-bg' elevation={3} style={colorStyle}>
+        <div className='demo-bg' style={colorStyle}>
+          {content[slice]}
+        </div>
+      </Paper>
     </>
   )
 }

@@ -1,7 +1,9 @@
 import generator from 'sequential-id-generator'
 import fontColorContrast from 'font-color-contrast'
 import './ColorsSheet.css'
+// import { Slider } from '@mui/material'
 import { Slider } from '../components/Slider'
+import { Paper } from '@mui/material'
 
 
 const colors = generator(6, '02468ACEF')
@@ -38,9 +40,11 @@ export function ColorsSheet ({slice, setSlice }: {
           />
         <p>Page {Number(slice) + 1} of {(testColors.length / spliceLimit).toFixed(0)} (from {testColors[slice * spliceLimit]} to {testColors[slice * spliceLimit + spliceLimit - 1] || '#FFFFFF'}</p>
       </div>
-      <div className='colors-sheet'>
-        {listColours}
-      </div>
+      <Paper className='demo' elevation={3}>
+        <div className='colors-sheet'>
+          {listColours}
+        </div>
+      </Paper>
     </>
   )
 }
