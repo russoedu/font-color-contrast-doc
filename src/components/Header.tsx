@@ -40,12 +40,12 @@ export function Header () {
           </Typography>
           <Typography className='navbar-item' variant='h6' component='div'>
             <Link to='/sheet'>
-              Color sheet
+              Color sheet demo
             </Link>
           </Typography>
           <Typography className='navbar-item' variant='h6' component='div'>
             <Link to='/picker'>
-              Color picker
+              Color picker demo
             </Link>
           </Typography>
           <div className='buttons'>

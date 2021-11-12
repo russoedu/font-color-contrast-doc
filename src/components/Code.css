@@ -1,0 +1,27 @@
+pre, code {
+  font-family: monospace;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+}
+pre {
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;
+  padding: 10px 20px;
+}
+
+code {
+  padding: 0 0.2em;
+}
+
+.copy-to-clipboard {
+  cursor: pointer;
+}
+.copy-to-clipboard > svg {
+  float: right;
+}
