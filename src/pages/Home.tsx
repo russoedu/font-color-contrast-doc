@@ -32,7 +32,7 @@ export function Home () {
         </a>
       </p>
       <p><strong>font-color-contrast</strong> is a JavaScript module to help you select black or white for a font according to the brightness of the background color to give you the best possible contrast and readability.</p>
-      <h3>How does it work</h3>
+      <h2>How does it work</h2>
       <p><strong>font-color-contrast</strong> uses the algorythm described in the article <a href="https://alienryderflex.com/hsp.html">HSP Color Model — Alternative to HSV (HSB) and HSL</a> where brightness is described as</p>
       <blockquote>
         <img alt="brightness = sqrt(0.299 * red^2 + 0.587 * green^2 + 0.114 * blue^2)" src="https://render.githubusercontent.com/render/math?math=brightness=\sqrt{0.299 * red^2 %2B 0.587 * green^2 %2B 0.114 * blue^2}" />
@@ -42,24 +42,36 @@ export function Home () {
       <p>This way, <strong>font-color-contrast</strong> will (with the default threshold of 0.5) return white (<code>'#ffffff'</code>) for dark brightness and black (<code>'#000000'</code>) for light brightness.</p>
       <p>You can change this default behaviour by passing the optional <code>threshold</code> parameter, so the comparison will be with the value you passed, not with 50%.</p>
       <h2>Installation</h2>
-      <Code>
+      <Code copy>
         npm i font-color-contrast
       </Code>
       <h2>Usage</h2>
-      <p>You can use <strong>font-color-contrast</strong> 4 ways, with an optional parameter for contrast <code>threshold</code> (from 0 to 1).</p>
+      <p>You can use <strong>font-color-contrast</strong> 4 ways:</p>
+      <ul>
+        <li>with a hexadecimal color string</li>
+        <li>with a color number</li>
+        <li>with an array of RGB color numbers</li>
+        <li>with separate RGB color numbers</li>
+      </ul>
+      <p>An optional parameter for contrast <code>threshold</code> (from 0 to 1) can be used on all options.</p>
       <h3>Hexadecimal color string</h3>
       <Code
         ts
-        content={`/**
-* @param hex The hex color string that must be a valid hexadecima color number to work correctly. Works with or without '#', with 3 or 6 color chars.
-* @param threshold Contrast threshold to control the resulting font color, float values from 0 to 1. Default is 0.5.
-*/
+      >
+{`/**
+ * @param hex The hex color string that must be a valid hexadecima color number to work correctly. Works with or without '#', with 3 or 6 color chars.
+ * @param threshold Contrast threshold to control the resulting font color, float values from 0 to 1. Default is 0.5.
+ */
 function fontColorContrast (hex: string, threshold?: number): '#ffffff' | '#000000'`}
-      />
+      </Code>
       <p>It can have the hash symbol or not, and use 6 or 3 characters. The <code>threshold</code> parameter is optional.</p>
       <Code
         ts
-        content={`import fontColorContrast from 'font-color-contrast'
+        copy
+      >
+{`import fontColorContrast from 'font-color-contrast'
+
+function fontColorContrast (hex: string, threshold?: number): '#ffffff' | '#000000'
 
 const myStringWithHash = '#00CC99'
 const fc1 = fontColorContrast(myStringWithHash) // '#000000'
@@ -70,11 +82,104 @@ const fc2 = fontColorContrast(myStringWithHash) // '#000000'
 const myStringWithoutHash = '00CC99'
 const fc3 = fontColorContrast(myStringWithoutHash) // '#000000'
 const fc4 = fontColorContrast(myStringWithoutHash, 0.7) // '#ffffff'`}
-      />
+      </Code>
+      <h3>Color number</h3>
       <Code
         ts
-        content={``}
-      />
+      >
+{`/**
+ * @param hex The hex color number that must be a valid hexadecimal color number.
+ * @param threshold Contrast threshold to control the resulting font color, float values from 0 to 1. Default is 0.5.
+ */
+function fontColorContrast (hex: number, threshold?: number): '#ffffff' | '#000000'`}
+      </Code>
+      <p>The number can be a hexadecimal or an integer. The <code>threshold</code> parameter is optional.</p>
+      <Code
+        ts
+        copy
+      >
+{`import fontColorContrast from 'font-color-contrast'
+
+const myHexNumber = 0x00cc99
+const fc1 = fontColorContrast(myHexNumber) // '#000000'
+
+const myIntNumber = 52377 // = 0x00cc99
+const fc2 = fontColorContrast(myIntNumber) // '#000000'
+const fc3 = fontColorContrast(myIntNumber, 0.7) // '#ffffff'`}
+      </Code>
+      <h3>Array of RGB color number</h3>
+      <Code
+        ts
+      >
+{`/**
+ * @param redGreenBlue Array with red, green and blue. Each value must be a number between 0 and 255.
+ * @param threshold Contrast threshold to control the resulting font color, float values from 0 to 1. Default is 0.5.
+ */
+function fontColorContrast(redGreenBlue: number[], threshold?: number): '#ffffff' | '#000000'`}
+      </Code>
+      <p>Each number can be a hexadecimal or an integer and you can mix it. The <code>threshold</code> parameter is optional.</p>
+      <Code
+        ts
+        copy
+      >
+{`import fontColorContrast from 'font-color-contrast'
+
+const myHexArray = [0x0, 0xcc, 0x99]
+const fc1 = fontColorContrast(myHexArray) // '#000000'
+
+const myIntArray = [0, 204, 153]
+const fc2 = fontColorContrast(myIntArray) // '#000000'
+const fc3 = fontColorContrast(myIntArray, 0.7) // '#ffffff'
+
+const myMixedArray = [0, 0xcc, 153]
+const fc4 = fontColorContrast(myMixedArray) // '#000000'
+const fc5 = fontColorContrast(myMixedArray, 0.7) // '#ffffff'`}
+      </Code>
+      <h3>Separate RGB color number</h3>
+      <Code
+        ts
+      >
+{`/**
+ * @param red The red portion of the color. Must be a number between 0 and 255.
+ * @param green The green portion of the color. Must be a number between 0 and 255.
+ * @param blue The blue portion of the color. Must be a number between 0 and 255.
+ * @example fontColorContrast('00', 'F3', D8) === fontColorContrast(0, 243, 216) === fontColorContrast(0x0, 0xF3, 0xd8).
+ */
+function fontColorContrast (red: number, green: number, blue: number, threshold?: number): '#ffffff' | '#000000'`}
+      </Code>
+      <p>Again, each number can be a hexadecimal or an integer and you can mix it. The <code>threshold</code> parameter is optional.</p>
+      <Code
+        ts
+        copy
+      >
+{`import fontColorContrast from 'font-color-contrast'
+
+const fc1 = fontColorContrast(0x0, 0xcc, 0x99) // '#000000'
+
+const fc2 = fontColorContrast(0, 204, 153) // '#000000'
+const fc3 = fontColorContrast(0, 204, 153, 0.7) // '#ffffff'
+
+const fc4 = fontColorContrast(0, 0xcc, 153) // '#000000'
+const fc5 = fontColorContrast(0, 0xcc, 153, 0.7) // '#ffffff'`}
+      </Code>
+      <h2>Examples</h2>
+      <p>Check the examples on <a href="/sheet">Color sheet demo</a> or on <a href="/picker">Color picker demo</a>.</p>
+      <h2>Tests</h2>
+      <p>Tests made using <a href="https://jestjs.io/" rel="nofollow">Jest</a>.</p>
+      <h2>Version history</h2>
+      <h3>0 -{'>'} 8.1.1</h3>
+      <p>JavaScript version, accepting strings for RGB</p>
+      <h3>9.0.0 -{'>'} 9.0.2</h3>
+      <p>TypeScript version.</p>
+      <p>Only numbers are now accepted as params when using array or RGB, because it was impossible to know if the string was decimal or hexadecimal. Accepting only numbers we can be sure the correct values are being used to calculate the contrast.</p>
+      <h3>9.1.0</h3>
+      <p>Updated algorithm from <a href='https://alienryderflex.com/hsp.html'>https://alienryderflex.com/hsp.html</a> with new thresholds for better contrast.</p>
+      <h3>10.0.0</h3>
+      <p>Included the optional threshold parameter (thanks, <a href='https://github.com/franciscohanna92'>franciscohanna92</a>).</p>
+      <h3>10.0.1</h3>
+      <p>Changed target to ES2015</p>
+      <h3>10.1.0</h3>
+      <p>Fixed package instalation from the new TS version</p>
     </Paper>
   )
 }
