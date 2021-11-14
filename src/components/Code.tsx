@@ -39,19 +39,6 @@ export function Code ({ children, copy = false, ts = false}: { children: string,
     setOpen(false);
   }
 
-  function getData () {
-    if (ts && children) {
-      const content = Prism.highlight(children, Prism.languages.typescript, 'typescript')
-
-      // const content = hljs.highlight(children, {language: 'typescript'}).value
-      return (
-        <span dangerouslySetInnerHTML={{ __html: content }} />
-      )
-    } else {
-      return children
-    }
-  }
-
   function highLight () {
     let content: ReactElement<any, any> | string
     if (ts && children) {
