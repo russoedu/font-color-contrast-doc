@@ -1,6 +1,6 @@
 import { Snackbar, Tooltip } from '@mui/material'
 import MuiAlert, { AlertProps } from '@mui/material/Alert'
-import { useState, forwardRef, BaseSyntheticEvent, SyntheticEvent } from 'react'
+import { useState, forwardRef, BaseSyntheticEvent, SyntheticEvent, ReactElement } from 'react'
 import { FaCopy } from 'react-icons/fa'
 
 // import hljs from 'highlight.js'
@@ -53,6 +53,13 @@ export function Code ({ children, copy = false, ts = false}: { children: string,
   }
 
   function highLight () {
+    let content: ReactElement<any, any> | string
+    if (ts && children) {
+      const parsed = Prism.highlight(children, Prism.languages.typescript, 'typescript')
+      content = <span dangerouslySetInnerHTML={{ __html: parsed }} />
+    } else {
+      content = children
+    }
     if (copy) {
       return (
         <>
@@ -63,8 +70,8 @@ export function Code ({ children, copy = false, ts = false}: { children: string,
           </Snackbar>
           <Tooltip title='Copy to clipboard'>
             <pre className='copy-to-clipboard' onClick={handleClick}>
-              {getData()}
               <FaCopy />
+              {content}
             </pre>
           </Tooltip>
         </>
@@ -72,7 +79,7 @@ export function Code ({ children, copy = false, ts = false}: { children: string,
     } else {
       return (
         <pre>
-          {getData()}
+          {content}
         </pre>
       )
     }
