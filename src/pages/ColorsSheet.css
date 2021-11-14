@@ -17,14 +17,34 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  /* box-sizing: content-box; */
 }
 
 .color-block {
   line-height: 20px;
   padding: 10px;
-  width: 80px;
+  width: calc(100% / 16);
   order: 0;
   flex: 0 1 auto;
   align-self: auto;
   text-align: center;
+}
+
+.demo {
+  padding: 0!important;
+}
+
+.demo > div:nth-child(1) {
+  border-top-left-radius: 4px;
+}
+
+.demo > div:nth-child(16) {
+  border-top-right-radius: 4px;
+}
+
+.demo > div:nth-last-child(1) {
+  border-bottom-right-radius: 4px;
+}
+.demo > div:nth-last-child(16) {
+  border-bottom-left-radius: 4px;
 }
