@@ -3,21 +3,11 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert'
 import { useState, forwardRef, BaseSyntheticEvent, SyntheticEvent, ReactElement } from 'react'
 import { FaCopy } from 'react-icons/fa'
 
-// import hljs from 'highlight.js'
-// import typescript from 'highlight.js/lib/languages/typescript'
-// import 'highlight.js/styles/github.css'
-
 import Prism  from 'prismjs'
-// import loadLanguages from 'prismjs/components/';
 import 'prismjs/components/prism-typescript'
 import 'prismjs/themes/prism.css'
 
 import './Code.css'
-
-// loadLanguages(['ts'])
-// hljs.registerLanguage('typescript', typescript)
-
-
 
 export function Code ({ children, copy = false, ts = false}: { children: string, copy?: boolean, ts?: boolean }): JSX.Element {
   const [open, setOpen] = useState(false)

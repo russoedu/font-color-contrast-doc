@@ -48,3 +48,7 @@
 .demo > div:nth-last-child(16) {
   border-bottom-left-radius: 4px;
 }
+
+.slider {
+  width: 100%;
+}

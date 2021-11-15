@@ -2,63 +2,86 @@ import generator from 'sequential-id-generator'
 import fontColorContrast from 'font-color-contrast'
 import './ColorsSheet.css'
 import { Slider } from '../components/Slider'
-import { Paper } from '@mui/material'
+import { Container, Paper } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { Box } from '@mui/system'
+
+let savedColors: false | string[] = false
 
 export function ColorsSheet ({slice, setSlice }: {
   slice: number,
   setSlice: React.Dispatch<React.SetStateAction<number>>
 }) {
   const [testColors, setTestColors] = useState([''])
-  const sliceSize = getSliceSize()
+  const [colorsLoaded, setColorsLoaded] = useState(false)
+  const sliceSize = 16 * 16
 
   useEffect(() => {
-    const testColorsResult = getColorsArray()
-    setTestColors(testColorsResult)
+    getColorsArray().then(testColorsResult => {
+      setTestColors(testColorsResult)
+      setColorsLoaded(true)
+    })
   }, [])
 
   function listColors () {
     let i = 0
-    return testColors.slice(slice * sliceSize, slice * sliceSize + sliceSize).map((color) => {
+    return testColors.slice(slice * sliceSize, slice * sliceSize + sliceSize).map((bgColor) => {
+        const color = fontColorContrast(bgColor)
         const divStyle = {
-          backgroundColor: color,
-          color: fontColorContrast(color),
+          backgroundColor: bgColor,
+          color: color,
+          'box-shadow': 'inset 2px 2px 5px' + color,
         }
-      return <div key={i++} className='color-block' style={divStyle}>{color}</div>
+      return <div key={i++} className='color-block' style={divStyle}>{bgColor}</div>
     })
   }
 
   return (
     <>
-      <div className='slider-container'>
-        <Slider
-          className='slider'
-          min={0}
-          max={Math.floor(testColors.length / sliceSize)}
-          value={slice}
-          setValue={setSlice}
-          />
-        <p>Page {Number(slice) + 1} of {(testColors.length / sliceSize).toFixed(0)} (from {testColors[slice * sliceSize]} to {testColors[slice * sliceSize + sliceSize - 1] || '#FFF'}</p>
-      </div>
-      <Paper className='demo container colors-sheet' elevation={3}>
-        {listColors()}
-      </Paper>
+      <Container className='container'>
+        {!colorsLoaded
+          ? <div>Loading sheet with 16,777,216 colors, this might take a while</div>
+          : <>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'left',
+                  flexWrap: 'wrap',
+                  paddingTop: '1em',
+                }}
+              >
+                <Slider
+                  className='slider'
+                  min={0}
+                  max={testColors.length / sliceSize - 1}
+                  value={slice}
+                  setValue={setSlice}
+                  />
+                <p>Page {Number(slice) + 1} of {(testColors.length / sliceSize).toFixed(0)} (from {testColors[slice * sliceSize]} to {testColors[slice * sliceSize + sliceSize - 1] || '#FFFFF'})</p>
+              </Box>
+              <Paper className='demo colors-sheet' elevation={3}>
+                {listColors()}
+              </Paper>
+            </>
+          }
+      </Container>
     </>
   )
 }
 
-function getColorsArray () {
-  const colors = generator(3, '0123456789ABCDEF')
-  const testColors: string[] = []
+function getColorsArray (): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    if (savedColors) {
+      resolve(savedColors)
+    } else {
+      const testColors: string[] = []
+      const colors = generator(3, '0123456789ABCDEF')
 
-  for (const color of Array.from(colors)) {
-    testColors.push('#' + color)
-  }
-
-  return testColors
-}
-
-function getSliceSize () {
-  const spaceLeft = (Number(((window.innerHeight - 48 - 65) / 40).toFixed(0)) - 1)
-  return 16 * spaceLeft
+      for (const color of Array.from(colors)) {
+        testColors.push('#' + color)
+      }
+      savedColors = testColors
+      resolve(testColors)
+    }
+  })
 }
