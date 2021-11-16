@@ -1,19 +1,16 @@
 .color-picker {
-  padding-left: 1em;
   position: -webkit-sticky;
   position: sticky;
-  top: 4em;
-  float: left;
-  margin-top: 5px;
+  top: calc(48px + 1em);
+  align-self: flex-start;
+  padding-right: 1em;
 }
 
 .demo-bg {
-  padding: 1em 1em 1em 260px ;
-  margin-right: 1em;
+  padding: 0.1em 2em 1em 2em;
+  margin-bottom: 1em;
 }
 
 .font-name {
-  text-align: left;
   font-style: italic;
-  font-weight: bolder;
 }

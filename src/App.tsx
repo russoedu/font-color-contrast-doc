@@ -25,10 +25,10 @@ export function App() {
           <Route
             path='/picker'
             element={<ColorPicker
-              slice={demoSlice}
-              setSlice={setDemoSlice}
-              fontSlice={demoFontSlice}
-              setFontSlice={setDemoFontSlice}
+              fontIndex={demoSlice}
+              setFontIndex={setDemoSlice}
+              sizeIndex={demoFontSlice}
+              setSizeIndex={setDemoFontSlice}
               color={color}
               setColor={setColor}
             />}

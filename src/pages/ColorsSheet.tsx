@@ -37,35 +37,33 @@ export function ColorsSheet ({slice, setSlice }: {
   }
 
   return (
-    <>
-      <Container className='container'>
-        {!colorsLoaded
-          ? <div>Loading sheet with 16,777,216 colors, this might take a while</div>
-          : <>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'left',
-                  flexWrap: 'wrap',
-                  paddingTop: '1em',
-                }}
-              >
-                <Slider
-                  className='slider'
-                  min={0}
-                  max={testColors.length / sliceSize - 1}
-                  value={slice}
-                  setValue={setSlice}
-                  />
-                <p>Page {Number(slice) + 1} of {(testColors.length / sliceSize).toFixed(0)} (from {testColors[slice * sliceSize]} to {testColors[slice * sliceSize + sliceSize - 1] || '#FFFFF'})</p>
-              </Box>
-              <Paper className='demo colors-sheet' elevation={3}>
-                {listColors()}
-              </Paper>
-            </>
-          }
-      </Container>
-    </>
+    <Container className='container'>
+      {!colorsLoaded
+        ? <div>Loading sheet with 16,777,216 colors, this might take a while</div>
+        : <>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'left',
+                flexWrap: 'wrap',
+                paddingTop: '1em',
+              }}
+            >
+              <Slider
+                className='slider'
+                min={0}
+                max={testColors.length / sliceSize - 1}
+                value={slice}
+                setValue={setSlice}
+                />
+              <p className='pagination'>Page {Number(slice) + 1} of {(testColors.length / sliceSize).toFixed(0)} (from {testColors[slice * sliceSize]} to {testColors[slice * sliceSize + sliceSize - 1] || '#FFFFF'})</p>
+            </Box>
+            <Paper className='demo colors-sheet' elevation={3}>
+              {listColors()}
+            </Paper>
+          </>
+        }
+    </Container>
   )
 }
 

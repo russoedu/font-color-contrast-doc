@@ -1,8 +1,9 @@
 import { HexColorPicker } from 'react-colorful'
 import fontColorContrast from 'font-color-contrast'
+import { Container, InputLabel, MenuItem, Paper, Select, FormControl } from '@mui/material'
+import { Box } from '@mui/system'
+
 import './ColorPicker.css'
-import { Slider } from '../components/Slider'
-import { Paper } from '@mui/material'
 
 const fontFamilies = [
   'serif',
@@ -41,68 +42,104 @@ const fontSizes = [
   '24pt',
 ]
 
-export function ColorPicker ({ slice, setSlice, color, setColor, fontSlice, setFontSlice }: {
-    slice: number,
-    setSlice: React.Dispatch<React.SetStateAction<number>>,
+export function ColorPicker ({ fontIndex, setFontIndex, color, setColor, sizeIndex, setSizeIndex }: {
+    fontIndex: number,
+    setFontIndex: React.Dispatch<React.SetStateAction<number>>,
     color: string,
     setColor: React.Dispatch<React.SetStateAction<string>>
-    fontSlice: number,
-    setFontSlice: React.Dispatch<React.SetStateAction<number>>
-  }) {
+    sizeIndex: number,
+    setSizeIndex: React.Dispatch<React.SetStateAction<number>>
+}){
 
-  const colorStyle = {
-    backgroundColor: color,
-    backgroundImage: `linear-gradient(to right, white 233px, ${color} 235px)`,
-    color: fontColorContrast(color)
-  }
-  const content = fontFamilies.map(font => {
-    return (
-      <div style={{ fontFamily: font, color: fontColorContrast(color), fontSize: fontSizes[fontSlice]}}>
-        <h1 className='font-name'>Font: {font}, size: {fontSizes[fontSlice]}</h1>
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non mi sit amet eros ultrices efficitur. Integer et orci accumsan lacus luctus placerat non ut tellus. Praesent et cursus turpis. Phasellus pharetra orci et enim congue sodales. Cras quis tellus scelerisque, pharetra augue sed, lacinia diam. Nulla sed varius tellus. Fusce egestas neque vitae aliquet laoreet. Vivamus vestibulum diam non tellus tristique, sit amet imperdiet sem gravida.
-</p><p>
-Mauris felis orci, accumsan vitae vestibulum et, vehicula ac turpis. Aliquam orci ex, cursus sed porttitor sed, ultricies sit amet augue. Nunc iaculis elementum varius. Curabitur ullamcorper auctor odio, ut eleifend metus. Nulla porta massa ut lorem suscipit tincidunt. Aenean a augue lectus. Cras a odio dignissim, pellentesque dolor et, ultrices quam. Duis id tincidunt lorem. In porta massa non tempor interdum. Morbi eu nisl at nibh cursus vehicula. Etiam posuere scelerisque purus, ac venenatis sem auctor sit amet. Quisque tempor ac odio eget scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum a consectetur sem, vel sodales neque. Pellentesque vestibulum lacus a arcu gravida efficitur.
-</p><p>
-Nullam sit amet lorem lacus. Vivamus ante felis, tempus nec dapibus porttitor, porta id nibh. Quisque faucibus, lacus eu vehicula commodo, lectus orci commodo nibh, et ultricies nunc tellus at est. Nulla vel suscipit lorem. Mauris gravida blandit ligula, pretium scelerisque odio facilisis quis. Fusce et urna eu diam varius sollicitudin. In vel nibh id orci mattis lacinia. Nullam ac purus ac est pretium molestie quis quis velit.
-</p><p>
-Etiam viverra tortor vitae sem dictum luctus. Sed et faucibus risus. Sed sodales nunc felis, eget consectetur odio dignissim at. Sed tempus mi quis risus tempus gravida. Ut eu sagittis urna. Ut est sem, porttitor ut hendrerit sit amet, pulvinar non est. Quisque consequat sem a enim porta congue. Maecenas tortor est, tincidunt ac ex sed, efficitur porta dui. Morbi rhoncus nisi nibh, sit amet consectetur libero ultricies vel. Integer fermentum sollicitudin sapien quis aliquam. Sed iaculis venenatis eleifend. Praesent feugiat massa eget nibh egestas, ut dapibus neque tincidunt. Proin vel turpis rhoncus, scelerisque nunc nec, euismod libero. Donec sollicitudin nibh tellus, sed imperdiet metus malesuada sit amet. Duis consequat, lacus elementum hendrerit ultrices, arcu ex mollis leo, nec aliquam est ex nec sem.
-</p><p>
-Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit nulla malesuada mollis. Fusce vitae condimentum quam. Integer nulla nibh, ultrices nec augue quis, porttitor porttitor turpis. Cras non iaculis eros, sed laoreet nisi. Nullam a nisl in dui venenatis cursus. Nullam viverra sed odio id tincidunt.
-        </p>
-        {/* {sizesText} */}
-      </div>
-    )
+  const fontOptions = fontFamilies.map((font, index) => {
+    return(<MenuItem style={{ fontFamily: font }}key={'font-' + font} value={index}>{font}</MenuItem>)
   })
 
+  const sizeOptions = fontSizes.map((size, index) => {
+    return(<MenuItem key={'size-' + size} value={index}>{size}</MenuItem>)
+  })
+
+  function handleFontChange (event: any) {
+    setFontIndex(event.target.value)
+  }
+
+  function handleSizeChange (event: any) {
+    setSizeIndex(event.target.value)
+  }
+
   return (
-    <>
-      <div className='slider-container'>
-        <Slider
-          className='slider'
-          min={0}
-          max={fontFamilies.length - 1}
-          value={slice}
-          setValue={setSlice}
-        />
-        <p>Font {Number(slice) + 1} of {(fontFamilies.length).toFixed(0)} ({fontFamilies[slice]})</p>
-        <Slider
-          className='slider'
-          min={0}
-          max={fontSizes.length - 1}
-          value={fontSlice}
-          setValue={setFontSlice}
-        />
-        <p>Size {Number(fontSlice) + 1} of {(fontSizes.length).toFixed(0)} ({fontSizes[fontSlice]})</p>
-      </div>
-      <div className='color-picker'>
-        <HexColorPicker color={color} onChange={setColor} />
-      </div>
-      <Paper className='demo demo-bg' elevation={3} style={colorStyle}>
-        <div className='demo-bg' style={colorStyle}>
-          {content[slice]}
-        </div>
-      </Paper>
-    </>
+    <Container className='container'>
+      <Box
+        sx={{
+          paddingTop: '1em',
+        }}
+      >
+        <FormControl
+          sx={{
+            marginRight: '1em',
+            width: '200px',
+          }}
+        >
+          <InputLabel id="font-label">Font</InputLabel>
+          <Select
+            labelId="font-label"
+            id="font"
+            label="Font"
+            value={fontIndex}
+            onChange={handleFontChange}
+          >
+            {fontOptions}
+          </Select>
+        </FormControl>
+        <FormControl
+           sx={{
+            width: '100px',
+          }}
+        >
+          <InputLabel id="font-size">Size</InputLabel>
+          <Select
+            labelId="font-size"
+            id="size"
+            label="Size"
+            value={sizeIndex}
+            onChange={handleSizeChange}
+          >
+            {sizeOptions}
+          </Select>
+        </FormControl>
+        {/* <select name="size" id="size" value={sizeIndex} onChange={handleSizeChange}>
+          {sizeOptions}
+        </select> */}
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'left',
+          paddingTop: '1em',
+        }}
+      >
+        <Box className='color-picker'>
+          <HexColorPicker  color={color} onChange={setColor} />
+        </Box>
+        <Paper
+          className='demo-bg'
+          elevation={3}
+          style={{
+            backgroundColor: color,
+            color: fontColorContrast(color),
+            fontFamily: fontFamilies[fontIndex],
+            fontSize: fontSizes[sizeIndex],
+          }}
+        >
+          <h1 className='font-name'>Font: {fontFamilies[fontIndex]}, size: {fontSizes[sizeIndex]}</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non mi sit amet eros ultrices efficitur. Integer et orci accumsan lacus luctus placerat non ut tellus. Praesent et cursus turpis. Phasellus pharetra orci et enim congue sodales. Cras quis tellus scelerisque, pharetra augue sed, lacinia diam. Nulla sed varius tellus. Fusce egestas neque vitae aliquet laoreet. Vivamus vestibulum diam non tellus tristique, sit amet imperdiet sem gravida.</p>
+          <p>Mauris felis orci, accumsan vitae vestibulum et, vehicula ac turpis. Aliquam orci ex, cursus sed porttitor sed, ultricies sit amet augue. Nunc iaculis elementum varius. Curabitur ullamcorper auctor odio, ut eleifend metus. Nulla porta massa ut lorem suscipit tincidunt. Aenean a augue lectus. Cras a odio dignissim, pellentesque dolor et, ultrices quam. Duis id tincidunt lorem. In porta massa non tempor interdum. Morbi eu nisl at nibh cursus vehicula. Etiam posuere scelerisque purus, ac venenatis sem auctor sit amet. Quisque tempor ac odio eget scelerisque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum a consectetur sem, vel sodales neque. Pellentesque vestibulum lacus a arcu gravida efficitur.</p>
+          <p>Nullam sit amet lorem lacus. Vivamus ante felis, tempus nec dapibus porttitor, porta id nibh. Quisque faucibus, lacus eu vehicula commodo, lectus orci commodo nibh, et ultricies nunc tellus at est. Nulla vel suscipit lorem. Mauris gravida blandit ligula, pretium scelerisque odio facilisis quis. Fusce et urna eu diam varius sollicitudin. In vel nibh id orci mattis lacinia. Nullam ac purus ac est pretium molestie quis quis velit.</p>
+          <p>Etiam viverra tortor vitae sem dictum luctus. Sed et faucibus risus. Sed sodales nunc felis, eget consectetur odio dignissim at. Sed tempus mi quis risus tempus gravida. Ut eu sagittis urna. Ut est sem, porttitor ut hendrerit sit amet, pulvinar non est. Quisque consequat sem a enim porta congue. Maecenas tortor est, tincidunt ac ex sed, efficitur porta dui. Morbi rhoncus nisi nibh, sit amet consectetur libero ultricies vel. Integer fermentum sollicitudin sapien quis aliquam. Sed iaculis venenatis eleifend. Praesent feugiat massa eget nibh egestas, ut dapibus neque tincidunt. Proin vel turpis rhoncus, scelerisque nunc nec, euismod libero. Donec sollicitudin nibh tellus, sed imperdiet metus malesuada sit amet. Duis consequat, lacus elementum hendrerit ultrices, arcu ex mollis leo, nec aliquam est ex nec sem.</p>
+          <p>Praesent fermentum a ligula a blandit. Cras rhoncus laoreet neque, sed hendrerit nulla malesuada mollis. Fusce vitae condimentum quam. Integer nulla nibh, ultrices nec augue quis, porttitor porttitor turpis. Cras non iaculis eros, sed laoreet nisi. Nullam a nisl in dui venenatis cursus. Nullam viverra sed odio id tincidunt.</p>
+        </Paper>
+      </Box>
+    </Container>
   )
 }
