@@ -24,15 +24,8 @@ function ElevationScroll(props: any) {
 export function Header () {
   return (
     <ElevationScroll>
-      <AppBar
-        position='sticky'
-        enableColorOnDark
-      >
-        <Toolbar
-          sx={{ borderBottom: 1, borderColor: 'divider', position: 'sticky', top: '0' }}
-          component='nav'
-          variant='dense'
-        >
+      <AppBar position='sticky' enableColorOnDark>
+        <Toolbar>
           <Typography className='navbar-item' variant='h5' component='div'>
             <Link to='/'>
               font-color-contrast

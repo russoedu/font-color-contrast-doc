@@ -30,7 +30,7 @@ export function ColorsSheet ({slice, setSlice }: {
         const divStyle = {
           backgroundColor: bgColor,
           color: color,
-          'box-shadow': 'inset 2px 2px 5px' + color,
+          boxShadow: 'inset 2px 2px 5px' + color,
         }
       return <div key={i++} className='color-block' style={divStyle}>{bgColor}</div>
     })
