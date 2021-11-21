@@ -10,7 +10,7 @@ let savedColors: false | string[] = false
 
 export function ColorsSheet ({slice, setSlice }: {
   slice: number,
-  setSlice: React.Dispatch<React.SetStateAction<number>>
+  setSlice: React.Dispatch<React.SetStateAction<number>>,
 }) {
   const [testColors, setTestColors] = useState([''])
   const [colorsLoaded, setColorsLoaded] = useState(false)
@@ -30,7 +30,6 @@ export function ColorsSheet ({slice, setSlice }: {
         const divStyle = {
           backgroundColor: bgColor,
           color: color,
-          boxShadow: 'inset 2px 2px 5px' + color,
         }
       return <div key={i++} className='color-block' style={divStyle}>{bgColor}</div>
     })
@@ -39,14 +38,14 @@ export function ColorsSheet ({slice, setSlice }: {
   return (
     <Container className='container'>
       {!colorsLoaded
-        ? <div>Loading sheet with 16,777,216 colors, this might take a while</div>
+        ? <div>Loading sheet with {testColors.length.toLocaleString()} colors, this might take a while</div>
         : <>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'left',
                 flexWrap: 'wrap',
-                paddingTop: '1em',
+                padding: '1em 0',
               }}
             >
               <Slider

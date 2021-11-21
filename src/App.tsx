@@ -9,9 +9,9 @@ import './App.css'
 
 export function App() {
   const [sheetSlice, setSheetSlice] = useState(0)
-  const [demoSlice, setDemoSlice] = useState(0)
-  const [demoFontSlice, setDemoFontSlice] = useState(7)
-  const [color, setColor] = useState('#df00ff')
+  const [fontIndex, setFontIndex] = useState(0)
+  const [sizeIndex, setSizeIndex] = useState(7)
+  const [pickerColor, setPickerColor] = useState('#121212')
 
   return (
     <BrowserRouter>
@@ -25,12 +25,12 @@ export function App() {
           <Route
             path='/picker'
             element={<ColorPicker
-              fontIndex={demoSlice}
-              setFontIndex={setDemoSlice}
-              sizeIndex={demoFontSlice}
-              setSizeIndex={setDemoFontSlice}
-              color={color}
-              setColor={setColor}
+              fontIndex={fontIndex}
+              setFontIndex={setFontIndex}
+              sizeIndex={sizeIndex}
+              setSizeIndex={setSizeIndex}
+              color={pickerColor}
+              setColor={setPickerColor}
             />}
           />
           <Route

@@ -13,8 +13,7 @@ nav {
 }
 
 .navbar-item>a, .get-links>a {
-  color: white;
-  text-decoration: none;
+  color: #121212;
   font-weight: bolder;
 }
 .get-links {

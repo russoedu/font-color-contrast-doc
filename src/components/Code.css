@@ -1,7 +1,10 @@
 pre, code {
   font-family: monospace;
-  background-color: #f6f8fa;
+  background-color: #1e1a28;
   border-radius: 6px;
+}
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  background: none;
 }
 pre {
   overflow: auto;

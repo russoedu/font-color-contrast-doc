@@ -73,7 +73,7 @@ export function ColorPicker ({ fontIndex, setFontIndex, color, setColor, sizeInd
         }}
       >
         <Box className='color-picker'>
-          <HexColorPicker  color={color} onChange={setColor} />
+          <HexColorPicker color={color} onChange={setColor} />
         </Box>
         <Paper
           className='demo-bg'
