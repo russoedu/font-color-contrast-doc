@@ -6,9 +6,27 @@
   padding-right: 1em;
 }
 
+.color-picker-details {
+  width: 100%;
+  border-radius: 10px!important;
+  margin-top: 1em;
+}
+
+.color-picker-details > div > div > div > p {
+  margin-bottom: 0!important;
+}
+
+.color-picker-details > div {
+  padding-bottom: 16px!important;
+}
+
+.color-detail {
+  padding-left: 0.4em!important;
+}
 .demo-bg {
   padding: 0.1em 2em 1em 2em;
   margin-bottom: 1em;
+  border-radius: 10px!important;
 }
 .demo-code {
   margin-top: 1em;
