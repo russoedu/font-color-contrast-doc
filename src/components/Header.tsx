@@ -9,9 +9,10 @@ export function Header () {
   return (
     <AppBar position='sticky' enableColorOnDark>
       <Toolbar>
-        <Typography className='navbar-item' variant='h5' component='div'>
+        <Typography className='navbar-item logo' variant='h5' component='div'>
           <Link to='/'>
-            font-color-contrast
+            <img src="font-color-contrast-logo.svg" alt="logo" />
+            <div>font-color-contrast</div>
           </Link>
         </Typography>
         <Typography className='navbar-item' variant='h6' component='div'>
