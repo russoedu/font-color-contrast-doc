@@ -25,6 +25,11 @@ export function Header () {
             Color picker demo
           </Link>
         </Typography>
+        <Typography className='navbar-item' variant='h6' component='div'>
+          <Link to='/css-sheet'>
+            CSS Color sheet demo
+          </Link>
+        </Typography>
         <div className='buttons'>
           <Button
             className='get-links'

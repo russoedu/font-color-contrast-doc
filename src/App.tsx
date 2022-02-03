@@ -6,6 +6,7 @@ import { ColorPicker } from './pages/ColorPicker'
 import { Home } from './pages/Home'
 import CssBaseline from '@mui/material/CssBaseline'
 import './App.css'
+import { CssColorsSheet } from './pages/CssColorsSheet'
 
 export function App() {
   const [sheetSlice, setSheetSlice] = useState(0)
@@ -39,6 +40,10 @@ export function App() {
               slice={sheetSlice}
               setSlice={setSheetSlice}
             />}
+          />
+          <Route
+            path='/css-sheet'
+            element={<CssColorsSheet/>}
           />
         </Routes>
       </CssBaseline>

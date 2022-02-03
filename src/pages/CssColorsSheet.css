@@ -1,0 +1,96 @@
+.css-colors-sheet {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.css-color-block {
+  line-height: 20px;
+  padding: 10px;
+  width: calc(100% / 4);
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.css-demo {
+  padding: 0!important;
+}
+
+.css-demo > div:nth-child(1) {
+  border-top-left-radius: 4px;
+}
+
+.css-demo > div:nth-child(4) {
+  border-top-right-radius: 4px;
+}
+
+.css-demo > div:nth-last-child(1) {
+  border-bottom-right-radius: 4px;
+}
+.css-demo > div:nth-last-child(4) {
+  border-bottom-left-radius: 4px;
+}
+
+.css-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1em 0;
+  background: linear-gradient(90deg,
+    #000, #00f, #0f0, #0ff,
+    #100, #10f, #1f0, #1ff,
+    #200, #20f, #2f0, #2ff,
+    #300, #30f, #3f0, #3ff,
+    #400, #40f, #4f0, #4ff,
+    #500, #50f, #5f0, #5ff,
+    #600, #60f, #6f0, #6ff,
+    #700, #70f, #7f0, #7ff,
+    #800, #80f, #8f0, #8ff,
+    #900, #90f, #9f0, #9ff,
+    #a00, #a0f, #af0, #aff,
+    #b00, #b0f, #bf0, #bff,
+    #c00, #c0f, #cf0, #cff,
+    #d00, #d0f, #df0, #dff,
+    #e00, #e0f, #ef0, #eff,
+    #f00, #f0f, #ff0, #fff
+  );
+}
+
+.css-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #fff;
+}
+.css-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.css-pagination {
+  margin: 0;
+}

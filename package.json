@@ -1,6 +1,6 @@
 {
   "name": "font-color-contrast-demo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +39,7 @@
     "@types/prismjs": "^1.16.6",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "font-color-contrast": "^10.1.0",
+    "font-color-contrast": "^11.0.0",
     "prismjs": "^1.25.0",
     "react": "^17.0.2",
     "react-colorful": "^5.5.0",
