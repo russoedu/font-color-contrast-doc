@@ -6,36 +6,28 @@ import { Container, Paper } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Box } from '@mui/system'
 
-let savedColors: false | string[] = false
 const sliceSize = 16 ** 2
-const maxSlices = sliceSize ** 2 - 1
 
-export function ColorsSheet ({slice, setSlice }: {
-  slice: number,
-  setSlice: React.Dispatch<React.SetStateAction<number>>,
+export function ColorsSheet ({redStart, setRedStart, greenStart, setGreenStart }: {
+  redStart: number,
+  setRedStart: React.Dispatch<React.SetStateAction<number>>,
+  greenStart: number,
+  setGreenStart: React.Dispatch<React.SetStateAction<number>>,
 }) {
-  const [testColorsOld, setTestColorsOld] = useState([''])
   const [colorsSheet, setColorsSheet] = useState([''])
-  const [sheetStart, setSheetStart] = useState('000000')
   const [colorsLoaded, setColorsLoaded] = useState(false)
 
   useEffect(() => {
-    getColorsArrayOld().then(testColorsResult => {
-      setTestColorsOld(testColorsResult)
+    getColorsSheet(redStart, greenStart).then(sheet => {
+      setColorsSheet(sheet)
       setColorsLoaded(true)
     })
-  }, [])
+  }, [redStart, greenStart])
 
-  useEffect(() => {
-    getSlice(slice).then(start => {
-      setSheetStart(start)
-    })
-  }, [slice])
-  useEffect(() => {
-    getColorsSheet(sheetStart).then(sheet => {
-      setColorsSheet(sheet)
-    })
-  }, [sheetStart])
+  function page () {
+    const color = <># <span className='red'>{toHex(redStart)}</span> <span className='green'>{toHex(greenStart)}</span></>
+    return <p className='pagination'>from <pre>{color} <span className='blue'>00</span></pre> to <pre>{color} <span className='blue'>FF</span></pre></p>
+  }
 
 
   function listColors () {
@@ -53,24 +45,32 @@ export function ColorsSheet ({slice, setSlice }: {
   return (
     <Container className='container'>
       {!colorsLoaded
-        ? <div>Loading sheet with {testColorsOld.length.toLocaleString()} colors, this might take a while</div>
+        ? <div>Loading colors sheet, this might take a while</div>
         : <>
             <Box
               sx={{
                 display: 'flex',
-                alignItems: 'left',
+                alignItems: 'center',
+                justifyContent: 'center',
                 flexWrap: 'wrap',
                 padding: '1em 0',
               }}
             >
               <Slider
-                className='slider'
+                className='slider red-slider'
                 min={0}
-                max={maxSlices}
-                value={slice}
-                setValue={setSlice}
-                />
-              <p className='pagination'>Page {(Number(slice) + 1).toLocaleString()} of {(maxSlices + 1).toLocaleString()} (from #{sheetStart} to {sheetStart.substring(0, 4) + 'FF'})</p>
+                max={255}
+                value={redStart}
+                setValue={setRedStart}
+              />
+              <Slider
+                className='slider green-slider'
+                min={0}
+                max={255}
+                value={greenStart}
+                setValue={setGreenStart}
+              />
+              {page()}
             </Box>
             <Paper className='demo colors-sheet' elevation={3}>
               {listColors()}
@@ -81,38 +81,21 @@ export function ColorsSheet ({slice, setSlice }: {
   )
 }
 
-function getColorsArrayOld (): Promise<string[]> {
-  return new Promise((resolve, reject) => {
-    if (savedColors) {
-      resolve(savedColors)
-    } else {
-      const testColors: string[] = []
-      const colors = generator(3, '0123456789ABCDEF')
+async function getColorsSheet (redStart: number, greenStart: number): Promise<string[]> {
+  const red = toHex(redStart)
+  const green = toHex(greenStart)
 
-      for (const color of Array.from(colors)) {
-        testColors.push('#' + color)
-      }
-      savedColors = testColors
-      resolve(testColors)
-    }
-  })
-}
-async function getColorsSheet (start: string): Promise<string[]> {
-    console.log('start', start)
-    const testColors: string[] = ['#' + start]
-    const colors = generator(start, '0123456789ABCDEF')
+  const colorsSheet: string[] = ['#' + red + green + '00']
+  const colors = generator(red + green + '00', '0123456789ABCDEF')
 
-    for (let i = 1; i < sliceSize; i++) {
-      testColors.push('#' + colors.next().value)
-    }
+  for (let i = 1; i < sliceSize; i++) {
+    colorsSheet.push('#' + colors.next().value)
+  }
 
-    console.log(testColors)
-
-    return testColors
+  return colorsSheet
 }
 
-async function getSlice (slice: number): Promise<string> {
-  const num = (slice * sliceSize).toString(16).toUpperCase()
-  const start = '0'.repeat(6 - num.length) + num
-  return start
+function toHex (num: number) {
+  const txt = Number(num).toString(16).toUpperCase()
+  return '0'.repeat(2 - txt.length) + txt
 }

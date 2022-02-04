@@ -11,7 +11,7 @@ export function Header () {
       <Toolbar>
         <Typography className='navbar-item logo' variant='h5' component='div'>
           <Link to='/'>
-            <img src="font-color-contrast-logo.svg" alt="logo" />
+            <img src="/font-color-contrast-logo.svg" alt="logo" />
             <div>font-color-contrast</div>
           </Link>
         </Typography>

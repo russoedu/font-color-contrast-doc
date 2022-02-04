@@ -22,7 +22,6 @@
 .color-block {
   line-height: 20px;
   padding: 10px;
-  width: calc(100% / 16);
   order: 0;
   flex: 0 1 auto;
   align-self: auto;
@@ -32,21 +31,68 @@
 
 .demo {
   padding: 0!important;
+  margin-bottom: 1em;
+  border-radius: var(--border-radius)!important;
 }
 
-.demo > div:nth-child(1) {
-  border-top-left-radius: 4px;
+@media (min-width: 1501px) {
+  .color-block {
+    width: calc(100% / 16);
+  }
+  .demo > div:nth-child(1) {
+    border-top-left-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-child(16) {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-last-child(1) {
+    border-bottom-right-radius: var(--border-radius);
+  }
+  .demo > div:nth-last-child(16) {
+    border-bottom-left-radius: var(--border-radius);
+  }
 }
 
-.demo > div:nth-child(16) {
-  border-top-right-radius: 4px;
+@media (max-width: 1500px) {
+  .color-block {
+    width: calc(100% / 8);
+  }
+  .demo > div:nth-child(1) {
+    border-top-left-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-child(8) {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-last-child(1) {
+    border-bottom-right-radius: var(--border-radius);
+  }
+  .demo > div:nth-last-child(8) {
+    border-bottom-left-radius: var(--border-radius);
+  }
 }
 
-.demo > div:nth-last-child(1) {
-  border-bottom-right-radius: 4px;
-}
-.demo > div:nth-last-child(16) {
-  border-bottom-left-radius: 4px;
+@media (max-width: 850px) {
+  .color-block {
+    width: calc(100% / 4);
+  }
+  .demo > div:nth-child(1) {
+    border-top-left-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-child(4) {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-last-child(1) {
+    border-bottom-right-radius: var(--border-radius);
+  }
+  .demo > div:nth-last-child(4) {
+    border-bottom-left-radius: var(--border-radius);
+  }
 }
 
 .slider {
@@ -55,24 +101,28 @@
   height: 10px;
   border-radius: 5px;
   margin: 1em 0;
+}
+.red-slider {
   background: linear-gradient(90deg,
-    #000, #00f, #0f0, #0ff,
-    #100, #10f, #1f0, #1ff,
-    #200, #20f, #2f0, #2ff,
-    #300, #30f, #3f0, #3ff,
-    #400, #40f, #4f0, #4ff,
-    #500, #50f, #5f0, #5ff,
-    #600, #60f, #6f0, #6ff,
-    #700, #70f, #7f0, #7ff,
-    #800, #80f, #8f0, #8ff,
-    #900, #90f, #9f0, #9ff,
-    #a00, #a0f, #af0, #aff,
-    #b00, #b0f, #bf0, #bff,
-    #c00, #c0f, #cf0, #cff,
-    #d00, #d0f, #df0, #dff,
-    #e00, #e0f, #ef0, #eff,
-    #f00, #f0f, #ff0, #fff
+    #000, #f00
   );
+}
+.green-slider {
+  background: linear-gradient(90deg,
+    #000, #0f0
+  );
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
 }
 
 .slider::-webkit-slider-thumb {
@@ -92,4 +142,11 @@
 
 .pagination {
   margin: 0;
+}
+.pagination pre {
+  background: white;
+  display: inline;
+  color: black;
+  padding: 0.4em;
+  margin: 0 1em;
 }
