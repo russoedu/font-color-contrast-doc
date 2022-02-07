@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/font-color-contrast-demo/static/css/main.4ef44419.chunk.css",
+    "main.js": "/font-color-contrast-demo/static/js/main.4c579b48.chunk.js",
+    "main.js.map": "/font-color-contrast-demo/static/js/main.4c579b48.chunk.js.map",
+    "runtime-main.js": "/font-color-contrast-demo/static/js/runtime-main.ba998f8e.js",
+    "runtime-main.js.map": "/font-color-contrast-demo/static/js/runtime-main.ba998f8e.js.map",
+    "static/css/2.0d8cb1d1.chunk.css": "/font-color-contrast-demo/static/css/2.0d8cb1d1.chunk.css",
+    "static/js/2.35d1f334.chunk.js": "/font-color-contrast-demo/static/js/2.35d1f334.chunk.js",
+    "static/js/2.35d1f334.chunk.js.map": "/font-color-contrast-demo/static/js/2.35d1f334.chunk.js.map",
+    "static/js/3.f54519e2.chunk.js": "/font-color-contrast-demo/static/js/3.f54519e2.chunk.js",
+    "static/js/3.f54519e2.chunk.js.map": "/font-color-contrast-demo/static/js/3.f54519e2.chunk.js.map",
+    "index.html": "/font-color-contrast-demo/index.html",
+    "static/css/2.0d8cb1d1.chunk.css.map": "/font-color-contrast-demo/static/css/2.0d8cb1d1.chunk.css.map",
+    "static/css/main.4ef44419.chunk.css.map": "/font-color-contrast-demo/static/css/main.4ef44419.chunk.css.map",
+    "static/js/2.35d1f334.chunk.js.LICENSE.txt": "/font-color-contrast-demo/static/js/2.35d1f334.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba998f8e.js",
+    "static/css/2.0d8cb1d1.chunk.css",
+    "static/js/2.35d1f334.chunk.js",
+    "static/css/main.4ef44419.chunk.css",
+    "static/js/main.4c579b48.chunk.js"
+  ]
+}
