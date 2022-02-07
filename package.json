@@ -1,7 +1,8 @@
 {
   "name": "font-color-contrast-demo",
-  "version": "2.0.0",
-  "private": true,
+  "version": "3.0.0",
+  "private": false,
+  "homepage": "https://russoedu.github.io/font-color-contrast-demo",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
