@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header'
 import { ColorsSheet } from './pages/ColorsSheet'
 import { ColorPicker } from './pages/ColorPicker'
@@ -16,7 +16,7 @@ export function App() {
   const [pickerColor, setPickerColor] = useState('#121212')
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <CssBaseline>
         <Header></Header>
         <Routes>
@@ -50,6 +50,6 @@ export function App() {
           />
         </Routes>
       </CssBaseline>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
