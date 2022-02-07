@@ -1,0 +1,13 @@
+.logo {
+  min-width: 270px!important;
+  flex-grow: 4;
+}
+
+.logo img {
+  max-height: 44px;
+  float: left;
+}
+
+.logo div {
+  padding-top: 6px;
+}

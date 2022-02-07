@@ -9,7 +9,11 @@ import 'prismjs/themes/prism.css'
 
 import './Code.css'
 
-export function Code ({ children, copy = false, ts = false}: { children: string, copy?: boolean, ts?: boolean }): JSX.Element {
+export function Code ({ children, copy = false, ts = false}: {
+  children: string,
+  copy?: boolean,
+  ts?: boolean,
+}): JSX.Element {
   const [open, setOpen] = useState(false)
 
   const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {

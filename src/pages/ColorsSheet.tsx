@@ -8,29 +8,28 @@ import { Box } from '@mui/system'
 
 const sliceSize = 16 ** 2
 
-export function ColorsSheet ({redStart, setRedStart, greenStart, setGreenStart }: {
-  redStart: number,
-  setRedStart: React.Dispatch<React.SetStateAction<number>>,
-  greenStart: number,
-  setGreenStart: React.Dispatch<React.SetStateAction<number>>,
+export function ColorsSheet ({red, setRed, green, setGreen }: {
+  red: number,
+  setRed: React.Dispatch<React.SetStateAction<number>>,
+  green: number,
+  setGreen: React.Dispatch<React.SetStateAction<number>>,
 }) {
   const [colorsSheet, setColorsSheet] = useState([''])
   const [colorsLoaded, setColorsLoaded] = useState(false)
 
   useEffect(() => {
-    getColorsSheet(redStart, greenStart).then(sheet => {
+    getColorsSheet(red, green).then(sheet => {
       setColorsSheet(sheet)
       setColorsLoaded(true)
     })
-  }, [redStart, greenStart])
+  }, [red, green])
 
   function page () {
-    const color = <># <span className='red'>{toHex(redStart)}</span> <span className='green'>{toHex(greenStart)}</span></>
-    return <p className='pagination'>from <pre>{color} <span className='blue'>00</span></pre> to <pre>{color} <span className='blue'>FF</span></pre></p>
+    const color = <># <span className='red'>{toHex(red)}</span> <span className='green'>{toHex(green)}</span></>
+    return <span className='pagination'>from <pre>{color} <span className='blue'>00</span></pre> to <pre>{color} <span className='blue'>FF</span></pre></span>
   }
 
-
-  function listColors () {
+  function colorSheet () {
     let i = 0
     return colorsSheet.map((bgColor) => {
         const color = fontColorContrast(bgColor)
@@ -60,20 +59,20 @@ export function ColorsSheet ({redStart, setRedStart, greenStart, setGreenStart }
                 className='slider red-slider'
                 min={0}
                 max={255}
-                value={redStart}
-                setValue={setRedStart}
+                value={red}
+                setValue={setRed}
               />
               <Slider
                 className='slider green-slider'
                 min={0}
                 max={255}
-                value={greenStart}
-                setValue={setGreenStart}
+                value={green}
+                setValue={setGreen}
               />
               {page()}
             </Box>
             <Paper className='demo colors-sheet' elevation={3}>
-              {listColors()}
+              {colorSheet()}
             </Paper>
           </>
         }
@@ -81,12 +80,12 @@ export function ColorsSheet ({redStart, setRedStart, greenStart, setGreenStart }
   )
 }
 
-async function getColorsSheet (redStart: number, greenStart: number): Promise<string[]> {
-  const red = toHex(redStart)
-  const green = toHex(greenStart)
+async function getColorsSheet (red: number, green: number): Promise<string[]> {
+  const r = toHex(red)
+  const g = toHex(green)
 
-  const colorsSheet: string[] = ['#' + red + green + '00']
-  const colors = generator(red + green + '00', '0123456789ABCDEF')
+  const colorsSheet: string[] = ['#' + r + g + '00']
+  const colors = generator(r + g + '00', '0123456789ABCDEF')
 
   for (let i = 1; i < sliceSize; i++) {
     colorsSheet.push('#' + colors.next().value)

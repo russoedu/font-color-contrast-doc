@@ -7,7 +7,7 @@ export function Slider ({ id= 'slider', className, min, max, vertical = false, v
   max: number,
   value: number,
   vertical?: boolean,
-  setValue: (React.Dispatch<React.SetStateAction<number>>)
+  setValue: (React.Dispatch<React.SetStateAction<number>>),
 }) {
   let cls: string = ''
   if (className && vertical) {

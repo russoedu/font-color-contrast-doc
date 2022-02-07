@@ -9,8 +9,8 @@ import './App.css'
 import { CssColorsSheet } from './pages/CssColorsSheet'
 
 export function App() {
-  const [redStart, setRedStart] = useState(0)
-  const [greenStart, setGreenStart] = useState(0)
+  const [red, setRed] = useState(0)
+  const [green, setGreen] = useState(0)
   const [fontIndex, setFontIndex] = useState(0)
   const [sizeIndex, setSizeIndex] = useState(7)
   const [pickerColor, setPickerColor] = useState('#121212')
@@ -38,10 +38,10 @@ export function App() {
           <Route
             path='/sheet'
             element={<ColorsSheet
-              redStart={redStart}
-              setRedStart={setRedStart}
-              greenStart={greenStart}
-              setGreenStart={setGreenStart}
+              red={red}
+              setRed={setRed}
+              green={green}
+              setGreen={setGreen}
             />}
           />
           <Route

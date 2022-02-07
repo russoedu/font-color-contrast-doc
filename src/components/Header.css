@@ -5,30 +5,9 @@ nav {
   /* flex-grow: 0; */
   padding-right: 1em;
 }
-.logo {
-  width: 25%
-}
-
-.logo img {
-  max-height: 44px;
-  float: left;
-}
-
-.logo div {
-  padding-top: 6px;
-}
-
 
 .buttons {
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
-}
-
-.navbar-item>a, .get-links>a {
-  color: #121212;
-  font-weight: bolder;
-}
-.get-links {
-  margin-left: 1em!important;
 }
