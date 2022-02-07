@@ -81,15 +81,12 @@ function fontColorContrast (hex: string, threshold?: number): '#ffffff' | '#0000
         >
   {`import fontColorContrast from 'font-color-contrast'
 
-const myStringWithHash = '#00CC99'
-const fc1 = fontColorContrast(myStringWithHash) // '#000000'
+const fc1 = fontColorContrast('#00CC99') // '#000000'
 
-const myStringWithHash3 = '#0C9'
-const fc2 = fontColorContrast(myStringWithHash) // '#000000'
+const fc2 = fontColorContrast('#0C9') // '#000000'
 
-const myStringWithoutHash = '00CC99'
-const fc3 = fontColorContrast(myStringWithoutHash) // '#000000'
-const fc4 = fontColorContrast(myStringWithoutHash, 0.7) // '#ffffff'`}
+const fc3 = fontColorContrast('00CC99') // '#000000'
+const fc4 = fontColorContrast('00CC99', 0.7) // '#ffffff'`}
         </Code>
         <h3>Named CSS color</h3>
         <Code
@@ -128,12 +125,10 @@ function fontColorContrast (hex: number, threshold?: number): '#ffffff' | '#0000
         >
   {`import fontColorContrast from 'font-color-contrast'
 
-const myHexNumber = 0x00cc99
-const fc1 = fontColorContrast(myHexNumber) // '#000000'
+const fc1 = fontColorContrast(0x00cc99) // '#000000'
 
-const myIntNumber = 52377 // = 0x00cc99
-const fc2 = fontColorContrast(myIntNumber) // '#000000'
-const fc3 = fontColorContrast(myIntNumber, 0.7) // '#ffffff'`}
+const fc2 = fontColorContrast(52377) // '#000000'
+const fc3 = fontColorContrast(52377, 0.7) // '#ffffff'`}
         </Code>
         <h3>Array of RGB color number</h3>
         <Code
@@ -152,16 +147,13 @@ function fontColorContrast(redGreenBlue: number[], threshold?: number): '#ffffff
         >
   {`import fontColorContrast from 'font-color-contrast'
 
-const myHexArray = [0x0, 0xcc, 0x99]
-const fc1 = fontColorContrast(myHexArray) // '#000000'
+const fc1 = fontColorContrast([0x0, 0xcc, 0x99]) // '#000000'
 
-const myIntArray = [0, 204, 153]
-const fc2 = fontColorContrast(myIntArray) // '#000000'
-const fc3 = fontColorContrast(myIntArray, 0.7) // '#ffffff'
+const fc2 = fontColorContrast([0, 204, 153]) // '#000000'
+const fc3 = fontColorContrast([0, 204, 153], 0.7) // '#ffffff'
 
-const myMixedArray = [0, 0xcc, 153]
-const fc4 = fontColorContrast(myMixedArray) // '#000000'
-const fc5 = fontColorContrast(myMixedArray, 0.7) // '#ffffff'`}
+const fc4 = fontColorContrast([0, 0xcc, 153]) // '#000000'
+const fc5 = fontColorContrast([0, 0xcc, 153], 0.7) // '#ffffff'`}
         </Code>
         <h3>Separate RGB color number</h3>
         <Code
@@ -242,7 +234,7 @@ function handleColorChange (event: any) {
 `}
               </Code>
           }
-        <p>Check it in action on <Link to='/sheet'>Color sheet demo</Link> or on <Link to='/picker'>Color picker demo</Link>.</p>
+        <p>Check it in action on <Link to='/sheet'>Color sheet</Link>, <Link to='/css-sheet'>CSS color sheet</Link> or on <Link to='/picker'>Color picker</Link>.</p>
         <h2>Tests</h2>
         <p>Tests made using <a href='https://jestjs.io/' target='_blank' rel='noreferrer'>Jest</a>.</p>
         <h2>Version history</h2>
