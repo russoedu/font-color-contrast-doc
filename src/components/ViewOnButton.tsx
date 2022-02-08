@@ -7,18 +7,16 @@ export function ViewOnButton ({ url, text, icon }: {
   icon: any,
  }) {
   return (
-    <a
-      className="view-on-button"
-      href={url}
-      target='_blank'
-      rel='noreferrer'
-    >
+    <>
       <Button
         className='vob-get-links'
         color='secondary'
         variant='contained'
         sx={{ display: { lg: 'flex', xs: 'none' } }}
         endIcon={icon}
+        href={url}
+        target='_blank'
+        rel='noreferrer'
       >
         {text}
       </Button>
@@ -32,6 +30,6 @@ export function ViewOnButton ({ url, text, icon }: {
           {icon}
         </span>
       </Button>
-    </a>
+    </>
   )
 }

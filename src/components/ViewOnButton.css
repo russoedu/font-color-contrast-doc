@@ -1,12 +1,4 @@
-.view-on-button {
-  display: flex!important;
-}
-.vob-get-links {
-  margin-left: 1em!important;
-}
-
 .vob-get-links-compact {
-  margin-left: 1em!important;
   padding-left: 0!important;
   padding-right: 0!important;
   min-width: 50px!important;

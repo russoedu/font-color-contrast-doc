@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { AppBar, Box, Button, ButtonGroup, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import { FaBars, FaNpm } from 'react-icons/fa'
@@ -34,30 +34,33 @@ export function Header () {
 
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page.name}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Typography textAlign="center">
-                  <Link to={page.link}>
+              <Link to={page.link}>
+                <Button
+                  key={page.name}
+                  sx={{ my: 2, display: 'block' }}
+                  color='secondary'
+                >
+                  <Typography textAlign="center">
                     {page.name}
-                  </Link>
-                </Typography>
-              </Button>
+                  </Typography>
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0, display: 'flex' }}>
-            <ViewOnButton
-              url='https://github.com/russoedu/font-color-contrast'
-              text='view on GitHub'
-              icon={<GoMarkGithub />}
-            />
-            <ViewOnButton
-              url='https://www.npmjs.com/package/font-color-contrast'
-              text='view on NPM'
-              icon={<FaNpm />}
-            />
+            <ButtonGroup variant="contained" sx={{ marginLeft: '1em' }}>
+              <ViewOnButton
+                url='https://github.com/russoedu/font-color-contrast'
+                text='view on GitHub'
+                icon={<GoMarkGithub />}
+              />
+              <ViewOnButton
+                url='https://www.npmjs.com/package/font-color-contrast'
+                text='view on NPM'
+                icon={<FaNpm />}
+              />
+            </ButtonGroup>
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
