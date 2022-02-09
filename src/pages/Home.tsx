@@ -33,11 +33,11 @@ export function Home () {
           <a href='https://scrutinizer-ci.com/g/russoedu/font-color-contrast/' target='_blank' rel='noreferrer'>
             <img src='https://camo.githubusercontent.com/4006117bbba0c578c05fedad4b296974ce1f391fcd45e9e44372255a1118af0c/68747470733a2f2f7363727574696e697a65722d63692e636f6d2f672f727573736f6564752f666f6e742d636f6c6f722d636f6e74726173742f6261646765732f7175616c6974792d73636f72652e706e673f623d6d6173746572' alt='Scrutinizer Code Quality' data-canonical-src='https://scrutinizer-ci.com/g/russoedu/font-color-contrast/badges/quality-score.png' />
           </a>
-          <a href='https://codeclimate.com/github/russoedu/font-color-contrast' target='_blank' rel='noreferrer'>
-            <img src='https://camo.githubusercontent.com/b56e95c32295deb6e822d85e155cd01ce8e9c3e25301cd821d0b48b63dceab39/68747470733a2f2f636f6465636c696d6174652e636f6d2f6769746875622f6477796c2f657374612f6261646765732f6770612e737667' alt='Code Climate' data-canonical-src='https://codeclimate.com/github/dwyl/esta/badges/gpa.svg' />
+          <a href="https://codeclimate.com/github/russoedu/font-color-contrast/maintainability" target='_blank' rel='noreferrer'>
+            <img src="https://api.codeclimate.com/v1/badges/daed002166b4a0404ea5/maintainability" alt='Code Climate code quality'/>
           </a>
           <a href="https://www.codacy.com/gh/russoedu/font-color-contrast/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=russoedu/font-color-contrast&amp;utm_campaign=Badge_Grade" target='_blank' rel='noreferrer'>
-            <img src="https://app.codacy.com/project/badge/Grade/320aed91c5c5438397df48b1cc85cc8a" alt='Codacy Badge'/>
+            <img src="https://app.codacy.com/project/badge/Grade/320aed91c5c5438397df48b1cc85cc8a" alt='Codacy code quality'/>
           </a>
           <a href='https://snyk.io/test/npm/font-color-contrast' target='_blank' rel='noreferrer'>
             <img src='https://camo.githubusercontent.com/77980cfc13198e616164c295c2ef0ef3fe9d4d4ad0342487847401cd09bfeb02/68747470733a2f2f736e796b2e696f2f746573742f6e706d2f666f6e742d636f6c6f722d636f6e74726173742f62616467652e737667' alt='Known Vulnerabilities' data-canonical-src='https://snyk.io/test/npm/font-color-contrast/badge.svg' />
