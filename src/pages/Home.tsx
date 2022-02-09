@@ -36,10 +36,14 @@ export function Home () {
           <a href='https://codeclimate.com/github/russoedu/font-color-contrast' target='_blank' rel='noreferrer'>
             <img src='https://camo.githubusercontent.com/b56e95c32295deb6e822d85e155cd01ce8e9c3e25301cd821d0b48b63dceab39/68747470733a2f2f636f6465636c696d6174652e636f6d2f6769746875622f6477796c2f657374612f6261646765732f6770612e737667' alt='Code Climate' data-canonical-src='https://codeclimate.com/github/dwyl/esta/badges/gpa.svg' />
           </a>
+          <a href="https://www.codacy.com/gh/russoedu/font-color-contrast/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=russoedu/font-color-contrast&amp;utm_campaign=Badge_Grade" target='_blank' rel='noreferrer'>
+            <img src="https://app.codacy.com/project/badge/Grade/320aed91c5c5438397df48b1cc85cc8a" alt='Codacy Badge'/>
+          </a>
           <a href='https://snyk.io/test/npm/font-color-contrast' target='_blank' rel='noreferrer'>
             <img src='https://camo.githubusercontent.com/77980cfc13198e616164c295c2ef0ef3fe9d4d4ad0342487847401cd09bfeb02/68747470733a2f2f736e796b2e696f2f746573742f6e706d2f666f6e742d636f6c6f722d636f6e74726173742f62616467652e737667' alt='Known Vulnerabilities' data-canonical-src='https://snyk.io/test/npm/font-color-contrast/badge.svg' />
           </a>
         </p>
+
         <p><strong>font-color-contrast</strong> is a JavaScript module to help you select black or white for a font according to the brightness of the background color to give you the best possible contrast and readability.</p>
         <h2>How does it work</h2>
         <p><strong>font-color-contrast</strong> uses the algorythm described in the article <a href='https://alienryderflex.com/hsp.html' target='_blank' rel='noreferrer'>HSP Color Model — Alternative to HSV (HSB) and HSL</a> where brightness is described as</p>
