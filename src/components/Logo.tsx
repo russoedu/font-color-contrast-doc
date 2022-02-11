@@ -16,7 +16,7 @@ export function Logo ({ sx }: {
     >
       <Link to='/'>
         <img src={logo} alt="logo" />
-        <div>font-color-contrast</div>
+        <div className='logo-text'>font-color-contrast</div>
       </Link>
     </Typography>
   )

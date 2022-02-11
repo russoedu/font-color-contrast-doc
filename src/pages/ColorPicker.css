@@ -1,3 +1,47 @@
+.cp-container {
+  padding-top: 1em;
+  display: flex!important;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.cp-container-item {
+  margin: 1em;
+}
+
+.cp-font-selector {
+  flex-grow: 1;
+  align-self: flex-start;
+  flex-basis: 100%;
+  order: 1;
+}
+
+.cp-color-picker {
+  align-self: flex-start;
+  flex: 0 1 200px;
+  order: 2;
+}
+
+.cp-demo-bg {
+  flex-grow: 1;
+  width: 1px;
+  padding: 0.1em 4% 4% 4%;
+  margin-bottom: 1em;
+  border-radius: 10px!important;
+  min-width: 210px;
+  order: 3;
+}
+
+@media (max-width: 750px) {
+  .cp-color-picker {
+    align-self: flex-start;
+    order: 0;
+  }
+  .cp-font-selector {
+    flex-basis: 10%;
+  }
+}
+
 .color-picker {
   position: -webkit-sticky;
   position: sticky;
@@ -7,7 +51,7 @@
 }
 
 .color-picker-details {
-  width: 100%;
+  width: 200px;
   border-radius: 10px!important;
   margin-top: 1em;
 }
@@ -18,17 +62,5 @@
 
 .color-picker-details > div {
   padding-bottom: 16px!important;
-}
-
-.color-detail {
-  padding-left: 0.4em!important;
-}
-.demo-bg {
-  padding: 0.1em 2em 1em 2em;
-  margin-bottom: 1em;
-  border-radius: 10px!important;
-}
-.demo-code {
-  margin-top: 1em;
 }
 

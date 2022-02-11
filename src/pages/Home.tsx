@@ -47,9 +47,7 @@ export function Home () {
         <p><strong>font-color-contrast</strong> is a JavaScript module to help you select black or white for a font according to the brightness of the background color to give you the best possible contrast and readability.</p>
         <h2>How does it work</h2>
         <p><strong>font-color-contrast</strong> uses the algorythm described in the article <a href='https://alienryderflex.com/hsp.html' target='_blank' rel='noreferrer'>HSP Color Model — Alternative to HSV (HSB) and HSL</a> where brightness is described as</p>
-        <blockquote>
-          <img className='formula' alt='brightness = sqrt(0.299 * red^2 + 0.587 * green^2 + 0.114 * blue^2)' src='https://render.githubusercontent.com/render/math?math=brightness=\sqrt{0.299 * red^2 %2B 0.587 * green^2 %2B 0.114 * blue^2}' />
-        </blockquote>
+        <img className='formula' alt='brightness = sqrt(0.299 * red^2 + 0.587 * green^2 + 0.114 * blue^2)' src='https://render.githubusercontent.com/render/math?math=brightness=\sqrt{0.299 * red^2 %2B 0.587 * green^2 %2B 0.114 * blue^2}' />
         <p>Any brightness smaller than 50% means the background is dark.</p>
         <p>Any brightness bigger than 50% means the background is light.</p>
         <p>This way, <strong>font-color-contrast</strong> will (with the default threshold of 0.5) return white (<code>'#ffffff'</code>) for dark brightness and black (<code>'#000000'</code>) for light brightness.</p>

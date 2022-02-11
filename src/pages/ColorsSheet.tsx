@@ -2,6 +2,7 @@ import generator from 'sequential-id-generator'
 import fontColorContrast from 'font-color-contrast'
 import './ColorsSheet.css'
 import { Slider } from '../components/Slider'
+import { ColorCode, toHex } from '../components/ColorCode'
 import { Container, Paper } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Box } from '@mui/system'
@@ -23,11 +24,6 @@ export function ColorsSheet ({red, setRed, green, setGreen }: {
       setColorsLoaded(true)
     })
   }, [red, green])
-
-  function page () {
-    const color = <># <span className='red'>{toHex(red)}</span> <span className='green'>{toHex(green)}</span></>
-    return <span className='pagination'>from <pre>{color} <span className='blue'>00</span></pre> to <pre>{color} <span className='blue'>FF</span></pre></span>
-  }
 
   function colorSheet () {
     let i = 0
@@ -69,7 +65,7 @@ export function ColorsSheet ({red, setRed, green, setGreen }: {
                 value={green}
                 setValue={setGreen}
               />
-              {page()}
+              <span className='pagination'>from <ColorCode red={red} green={green} blue={0} /> to <ColorCode red={red} green={green} blue={0xff} /></span>
             </Box>
             <Paper className='demo colors-sheet' elevation={3}>
               {colorSheet()}
@@ -92,9 +88,4 @@ async function getColorsSheet (red: number, green: number): Promise<string[]> {
   }
 
   return colorsSheet
-}
-
-function toHex (num: number) {
-  const txt = Number(num).toString(16).toUpperCase()
-  return '0'.repeat(2 - txt.length) + txt
 }

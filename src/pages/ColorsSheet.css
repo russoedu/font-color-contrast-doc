@@ -33,29 +33,28 @@
   padding: 0!important;
   margin-bottom: 1em;
   border-radius: var(--border-radius)!important;
+  font-size: 14px;
 }
 
-@media (min-width: 1501px) {
-  .color-block {
-    width: calc(100% / 16);
-  }
-  .demo > div:nth-child(1) {
-    border-top-left-radius: var(--border-radius);
-  }
-
-  .demo > div:nth-child(16) {
-    border-top-right-radius: var(--border-radius);
-  }
-
-  .demo > div:nth-last-child(1) {
-    border-bottom-right-radius: var(--border-radius);
-  }
-  .demo > div:nth-last-child(16) {
-    border-bottom-left-radius: var(--border-radius);
-  }
+.color-block {
+  width: calc(100% / 16);
+}
+.demo > div:nth-child(1) {
+  border-top-left-radius: var(--border-radius);
 }
 
-@media (max-width: 1500px) {
+.demo > div:nth-child(16) {
+  border-top-right-radius: var(--border-radius);
+}
+
+.demo > div:nth-last-child(1) {
+  border-bottom-right-radius: var(--border-radius);
+}
+.demo > div:nth-last-child(16) {
+  border-bottom-left-radius: var(--border-radius);
+}
+
+@media (max-width: 1200px) {
   .color-block {
     width: calc(100% / 8);
   }
@@ -75,7 +74,7 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
   .color-block {
     width: calc(100% / 4);
   }
@@ -91,6 +90,27 @@
     border-bottom-right-radius: var(--border-radius);
   }
   .demo > div:nth-last-child(4) {
+    border-bottom-left-radius: var(--border-radius);
+  }
+}
+
+
+@media (max-width: 400px) {
+  .color-block {
+    width: calc(100% / 2);
+  }
+  .demo > div:nth-child(1) {
+    border-top-left-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-child(2) {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-last-child(1) {
+    border-bottom-right-radius: var(--border-radius);
+  }
+  .demo > div:nth-last-child(2) {
     border-bottom-left-radius: var(--border-radius);
   }
 }
@@ -113,18 +133,6 @@
   );
 }
 
-.red {
-  color: red;
-}
-
-.green {
-  color: green;
-}
-
-.blue {
-  color: blue;
-}
-
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -142,11 +150,4 @@
 
 .pagination {
   margin: 0;
-}
-.pagination pre {
-  background: white;
-  display: inline;
-  color: black;
-  padding: 0.4em;
-  margin: 0 1em;
 }

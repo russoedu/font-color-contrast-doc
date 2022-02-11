@@ -34,7 +34,7 @@ export function Header () {
 
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to={page.link}>
+              <Link to={page.link} key={page.name}>
                 <Button
                   key={page.name}
                   sx={{ my: 2, display: 'block' }}
