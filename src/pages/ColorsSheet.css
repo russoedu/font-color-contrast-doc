@@ -36,25 +36,27 @@
   font-size: 14px;
 }
 
-.color-block {
-  width: calc(100% / 16);
-}
-.demo > div:nth-child(1) {
-  border-top-left-radius: var(--border-radius);
+@media (min-width: 1200px) {
+  .color-block {
+    width: calc(100% / 16);
+  }
+  .demo > div:nth-child(1) {
+    border-top-left-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-child(16) {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .demo > div:nth-last-child(1) {
+    border-bottom-right-radius: var(--border-radius);
+  }
+  .demo > div:nth-last-child(16) {
+    border-bottom-left-radius: var(--border-radius);
+  }
 }
 
-.demo > div:nth-child(16) {
-  border-top-right-radius: var(--border-radius);
-}
-
-.demo > div:nth-last-child(1) {
-  border-bottom-right-radius: var(--border-radius);
-}
-.demo > div:nth-last-child(16) {
-  border-bottom-left-radius: var(--border-radius);
-}
-
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 800px) {
   .color-block {
     width: calc(100% / 8);
   }
@@ -74,7 +76,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 800px) and (min-width: 400px) {
   .color-block {
     width: calc(100% / 4);
   }
